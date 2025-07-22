@@ -2,31 +2,55 @@
   "name": "consejo-civico",
   "version": "1.0.0",
   "private": true,
-  "description": "consejo-civico",
+  "description": "cic",
   "keywords": [
     "gatsby"
   ],
   "scripts": {
-    "develop": "gatsby develop",
+    "develop": "gatsby develop -H 0.0.0.0",
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --ext .ts,.tsx"
   },
   "dependencies": {
-    "autoprefixer": "^10.4.21",
-    "gatsby": "^5.14.1",
-    "gatsby-plugin-postcss": "^6.14.0",
-    "postcss": "^8.5.6",
+    "@emailjs/browser": "^4.4.1",
+    "@reduxjs/toolkit": "^2.2.7",
+    "autoprefixer": "^10.4.20",
+    "framer-motion": "^11.3.21",
+    "gatsby": "^5.13.5",
+    "gatsby-plugin-google-tagmanager": "^5.14.0",
+    "gatsby-plugin-postcss": "^6.13.1",
+    "gatsby-plugin-sass": "^6.13.1",
+    "i": "^0.3.7",
+    "lucide-react": "^0.525.0",
+    "npm": "^10.8.2",
+    "postcss": "^8.4.40",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tailwindcss": "^4.1.11"
+    "react-helmet": "^6.1.0",
+    "react-intersection-observer": "^9.13.0",
+    "react-lottie": "^1.2.4",
+    "react-player": "^2.16.0",
+    "react-redux": "^9.1.2",
+    "react-responsive-carousel": "^3.2.23",
+    "react-slick": "^0.30.2",
+    "react-spinners": "^0.14.1",
+    "react-swipeable": "^7.0.2",
+    "sass": "^1.77.8",
+    "slick-carousel": "^1.8.1",
+    "tailwindcss": "^3.4.7"
   },
   "devDependencies": {
     "@types/node": "^20.11.19",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
+    "@types/react-helmet": "^6.1.11",
+    "@types/react-lottie": "^1.2.10",
+    "@types/react-slick": "^0.23.13",
+    "eslint-config-react-app": "^7.0.1",
     "typescript": "^5.3.3"
   }
 }

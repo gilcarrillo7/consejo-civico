@@ -1,0 +1,54 @@
+import React from "react";
+import LogoCircular from "../../images/civico.gif"; // cambia a tu ruta real
+import Button from "../shared/Button";
+import Page from "../layout/Page";
+
+export default function CivicSection() {
+  return (
+    <Page>
+      <div className="mx-auto flex flex-col lg:flex-row items-start justify-between items-center gap-16">
+        <div className="md:order-2 relative w-[400px] h-[400px] rounded-full overflow-hidden border-4 border-white shadow-lg">
+          {/* GIF de fondo */}
+          <img
+            src={LogoCircular}
+            alt="Consejo Cívico"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        {/* Texto */}
+        <div className="flex flex-col gap-16 max-w-2xl">
+          <div>
+            <h2 className="text-2xl md:text-3xl font-semibold text-primary mb-6">
+              Nuestra ciudad es resultado de la <br />
+              corresponsabilidad.
+            </h2>
+
+            <h3 className="text-lg md:text-xl text-secondary font-bold underline underline-offset-4 mb-4">
+              Centro de Integración Ciudadana Saltillo
+            </h3>
+
+            <p className="text-base text-primary mb-6">
+              CIC es una plataforma que enlaza a la ciudadanía con las
+              autoridades para mejorar su entorno y sus comunidades a través de
+              la canalización de tus reportes ciudadanos.
+            </p>
+
+            <Button variant="secondary">Leer más</Button>
+          </div>
+
+          <div>
+            <h3 className="text-lg md:text-xl text-secondary font-bold mb-4 underline">
+              Saltillo, ¿Cómo vamos?
+            </h3>
+
+            <p className="text-base text-primary">
+              Contribuimos al fortalecimiento de la democracia evaluando los
+              resultados del gobierno municipal, fomentando la participación
+              ciudadana, aportando datos y espacios de rendición de cuentas.
+            </p>
+          </div>
+        </div>
+      </div>
+    </Page>
+  );
+}

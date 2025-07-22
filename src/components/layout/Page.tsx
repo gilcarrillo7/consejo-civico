@@ -1,0 +1,19 @@
+import * as React from "react";
+
+const Page = ({
+  className,
+  children,
+}: {
+  className?: string;
+  children: React.ReactNode;
+}) => {
+  return (
+    <div
+      className={`min-h-screen flex items-center justify-center relative py-16 md:py-8 ${className}`}
+    >
+      <div className="container">{children}</div>
+    </div>
+  );
+};
+
+export default Page;
