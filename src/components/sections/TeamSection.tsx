@@ -2,12 +2,9 @@ import React from "react";
 import Page from "../layout/Page";
 import EquipoImage from "../../images/equipo.png";
 import Button from "../shared/Button";
-import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 
 export default function TeamSection() {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.3 });
-
   const listVariants = {
     hidden: {},
     visible: {
@@ -25,12 +22,13 @@ export default function TeamSection() {
 
   return (
     <Page className="bg-secondary text-primary">
-      <div className="container mx-auto" ref={ref}>
+      <div className="container mx-auto">
         <motion.h2
           className="text-2xl md:text-3xl font-semibold text-primary text-center md:text-left sm:mb-12"
           initial={{ opacity: 0, y: -20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
+          viewport={{ once: true, amount: 0.3 }}
         >
           Nuestro equipo
         </motion.h2>
@@ -39,8 +37,9 @@ export default function TeamSection() {
           <motion.div
             className="relative max-w-xl"
             initial={{ opacity: 0, x: -50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.3 }}
           >
             <div className="relative z-10">
               <img
@@ -55,12 +54,12 @@ export default function TeamSection() {
             </div>
           </motion.div>
 
-          {/* Texto */}
           <motion.div
             className="max-w-xl space-y-6 text-left text-primary"
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
             variants={listVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
           >
             <motion.p
               className="font-bold text-lg text-[#2C1A84]"

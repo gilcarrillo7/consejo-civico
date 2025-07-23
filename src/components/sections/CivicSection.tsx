@@ -2,26 +2,18 @@ import React from "react";
 import LogoCircular from "../../images/civico.gif";
 import Button from "../shared/Button";
 import Page from "../layout/Page";
-import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 
 export default function CivicSection() {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.5,
-  });
-
   return (
     <Page>
-      <div
-        ref={ref}
-        className="mx-auto flex flex-col lg:flex-row items-start justify-between items-center gap-16"
-      >
+      <div className="mx-auto flex flex-col lg:flex-row items-start justify-between items-center gap-16">
         <motion.div
           className="md:order-2 relative max-w-100 sm:w-[400px] sm:h-[400px] rounded-full overflow-hidden border-4 border-white shadow-lg"
           initial={{ opacity: 0, scale: 0.8 }}
-          animate={inView ? { opacity: 1, scale: 1 } : {}}
+          whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.5 }}
         >
           <img
             src={LogoCircular}
@@ -33,8 +25,9 @@ export default function CivicSection() {
         <motion.div
           className="flex flex-col gap-16 max-w-2xl"
           initial={{ opacity: 0, y: 40 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true, amount: 0.5 }}
         >
           <div>
             <h2 className="text-2xl md:text-3xl font-semibold text-primary mb-6">

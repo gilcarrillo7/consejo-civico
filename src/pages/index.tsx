@@ -10,6 +10,8 @@ import TransparenciaIcon from "../images/icon-transparencia.svg";
 import CiudadaniaIcon from "../images/icon-ciudadania.svg";
 import TeamSection from "../components/sections/TeamSection";
 import AlliancesSection from "../components/sections/AlliancesSection";
+import { HeadFC } from "gatsby";
+import { SEO } from "../components/layout/SEO";
 
 const axes = [
   { title: "Seguridad", icon: SeguridadIcon },
@@ -35,3 +37,5 @@ const IndexPage = () => {
 };
 
 export default IndexPage;
+
+export const Head: HeadFC = () => <SEO title="Home" />;

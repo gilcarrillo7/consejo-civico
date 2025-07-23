@@ -17,7 +17,7 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="bg-primary text-white w-full absolute top-0 left-0 z-50">
+    <header className="bg-transparent text-white w-full absolute top-0 left-0 z-50">
       {/* Header base */}
       <div className="container mx-auto flex items-center justify-between py-12 relative z-50">
         <Link to="/">

@@ -1,0 +1,59 @@
+import React from "react";
+import { motion } from "framer-motion";
+import Page from "../layout/Page";
+import OrganigramaImage from "../../images/organigrama.png"; // Asegúrate de tener esta imagen en tu ruta
+import Button from "../shared/Button";
+
+export default function OrganigramSection() {
+  return (
+    <Page className="bg-white">
+      <div className="container mx-auto text-center">
+        <motion.h2
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-2xl md:text-3xl font-semibold text-primary mb-12"
+        >
+          Organigrama institucional
+        </motion.h2>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="flex justify-center"
+        >
+          <img
+            src={OrganigramaImage}
+            alt="Organigrama institucional"
+            className="w-full max-w-5xl h-auto object-contain"
+          />
+        </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="text-lg sm:text-xl font-semibold text-secondary mt-16"
+        >
+          ¡Escríbenos y sumemos esfuerzos para construir una mejor sociedad!
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          viewport={{ once: true }}
+          className="w-full text-center mt-8"
+        >
+          <Button variant="primary" containerClassName="!text-center">
+            Contacto
+          </Button>
+        </motion.div>
+      </div>
+    </Page>
+  );
+}

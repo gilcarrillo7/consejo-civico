@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useSwipeable } from "react-swipeable";
 import classNames from "classnames";
-import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 
 type AxisItem = {
@@ -22,7 +21,6 @@ export default function AxesSection({
   theme = "primary",
 }: AxesSectionProps) {
   const [current, setCurrent] = useState(0);
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.5 });
 
   const handlePrev = () => {
     setCurrent((prev) => (prev === 0 ? axes.length - 1 : prev - 1));
@@ -59,7 +57,6 @@ export default function AxesSection({
 
   return (
     <section
-      ref={ref}
       className={classNames(bgClass, "py-16 px-4 text-center md:text-left")}
     >
       <div className="container mx-auto">
@@ -69,19 +66,21 @@ export default function AxesSection({
             textColorClass
           )}
           initial={{ opacity: 0, y: -10 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
+          viewport={{ once: true, amount: 0.5 }}
         >
           {title}
         </motion.h2>
 
-        {/* Mobile: Carrusel con swipe */}
+        {/* Mobile: Carrusel */}
         <motion.div
           className="flex flex-col items-center md:hidden"
           {...swipeHandlers}
           initial={{ opacity: 0, scale: 0.9 }}
-          animate={inView ? { opacity: 1, scale: 1 } : {}}
+          whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
+          viewport={{ once: true, amount: 0.5 }}
         >
           <div className="flex items-center justify-center gap-6">
             <button onClick={handlePrev} aria-label="Anterior">
@@ -112,12 +111,13 @@ export default function AxesSection({
           </div>
         </motion.div>
 
-        {/* Desktop */}
+        {/* Desktop: Grid */}
         <motion.div
           className="hidden md:flex flex-wrap justify-around gap-4"
           variants={containerVariants}
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
         >
           {axes.map((axis) => (
             <motion.div

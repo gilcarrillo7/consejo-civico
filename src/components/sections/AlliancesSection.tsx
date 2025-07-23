@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
 import Page from "../layout/Page";
 
 import Alianza1 from "../../images/alianzas/alianza1.png";
@@ -78,8 +77,6 @@ const logos = [
 ];
 
 export default function AlliancesSection() {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
-
   const containerVariants = {
     hidden: {},
     visible: {
@@ -97,12 +94,13 @@ export default function AlliancesSection() {
 
   return (
     <Page className="bg-white">
-      <div className="container mx-auto" ref={ref}>
+      <div className="container mx-auto">
         <motion.h2
           className="text-secondary text-xl md:text-3xl font-semibold mb-12"
           initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
+          viewport={{ once: true, amount: 0.2 }}
         >
           Alianzas
         </motion.h2>
@@ -111,7 +109,8 @@ export default function AlliancesSection() {
           className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-7 gap-y-8 gap-x-4 place-items-center"
           variants={containerVariants}
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
         >
           {logos.map((logo, idx) => (
             <motion.div

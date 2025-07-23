@@ -5,14 +5,16 @@ type ButtonProps = {
   children: React.ReactNode;
   onClick?: () => void;
   className?: string;
+  containerClassName?: string;
   type?: "button" | "submit" | "reset";
-  variant?: "primary" | "secondary" | "outline";
+  variant?: "primary" | "secondary" | "outline" | "outline-secondary";
 };
 
 const Button = ({
   children,
   onClick,
   className = "",
+  containerClassName = "",
   type = "button",
   variant = "outline",
 }: ButtonProps) => {
@@ -25,10 +27,12 @@ const Button = ({
       "w-[220px] mx-auto border bg-primary border-primary text-white hover:bg-white hover:border-primary hover:text-primary",
     secondary:
       "w-[220px] mx-auto border border-secondary text-secondary hover:bg-secondary hover:text-white",
+    "outline-secondary":
+      "w-[220px] mx-auto mt-8 border border-secondary text-secondary hover:bg-secondary hover:text-primary",
   };
 
   return (
-    <div className="text-center sm:text-left">
+    <div className={classNames("text-center sm:text-left", containerClassName)}>
       <button
         type={type}
         onClick={onClick}
