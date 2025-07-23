@@ -1,6 +1,9 @@
 import { Menu, X } from "lucide-react";
-import Logo from "../../images/logo.svg";
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Helmet } from "react-helmet";
+import Logo from "../../images/logo.svg";
+import { Link } from "gatsby";
 
 const navItems = [
   "Quiénes somos",
@@ -17,8 +20,9 @@ export default function Header() {
     <header className="bg-primary text-white w-full absolute top-0 left-0 z-50">
       {/* Header base */}
       <div className="container mx-auto flex items-center justify-between py-12 relative z-50">
-        <img src={Logo} alt="Logo Consejo Cívico" className="h-12 md:h-16" />
-
+        <Link to="/">
+          <img src={Logo} alt="Logo Consejo Cívico" className="h-12 md:h-16" />
+        </Link>
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="text-white focus:outline-none transition-all duration-300"
@@ -42,24 +46,56 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Menú desplegable */}
-      {isOpen && (
-        <div className="fixed top-0 left-0 w-full h-screen bg-primary text-white z-40 transition-all duration-300 ease-in-out">
-          <div className="container mx-auto py-12 flex flex-col gap-10">
-            <nav className="flex flex-col gap-12 text-2xl sm:text-3xl lg:text-4xl mt-24 lg:mt-32">
-              {navItems.map((item, index) => (
-                <a
-                  key={index}
-                  href="#"
-                  className="hover:text-complementary transition"
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            <motion.div
+              key="mobileMenu"
+              initial={{ opacity: 0, y: -50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -50 }}
+              transition={{ duration: 0.4 }}
+              className="fixed top-0 left-0 w-full h-screen bg-primary text-white z-40"
+            >
+              <div className="container mx-auto py-12 flex flex-col gap-10">
+                <motion.nav
+                  className="flex flex-col gap-12 text-2xl sm:text-3xl lg:text-4xl mt-24 lg:mt-32"
+                  initial="hidden"
+                  animate="visible"
+                  variants={{
+                    hidden: {},
+                    visible: {
+                      transition: {
+                        staggerChildren: 0.1,
+                      },
+                    },
+                  }}
                 >
-                  {item}
-                </a>
-              ))}
-            </nav>
-          </div>
-        </div>
-      )}
+                  {navItems.map((item, index) => (
+                    <motion.a
+                      key={index}
+                      href="#"
+                      className="hover:text-complementary transition"
+                      variants={{
+                        hidden: { opacity: 0, x: 0 },
+                        visible: { opacity: 1, x: 0 },
+                      }}
+                    >
+                      {item}
+                    </motion.a>
+                  ))}
+                </motion.nav>
+              </div>
+            </motion.div>
+
+            <Helmet
+              bodyAttributes={{
+                class: "overflow-hidden",
+              }}
+            />
+          </>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

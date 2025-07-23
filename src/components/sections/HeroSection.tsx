@@ -1,13 +1,19 @@
 import React from "react";
+import { motion } from "framer-motion";
 import Page from "../layout/Page";
 import Button from "../shared/Button";
 
 const HeroSection = () => {
   return (
-    <Page className="bg-primary">
-      <div className="mx-auto flex flex-col lg:flex-row justify-between items-center gap-8">
+    <Page className="bg-primary overflow-hidden">
+      <div className="container mx-auto flex flex-col lg:flex-row justify-between items-center gap-16 py-16">
         {/* Decorative Image */}
-        <div className="order-1 lg:order-2">
+        <motion.div
+          className="order-1 lg:order-2"
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="629"
@@ -21,11 +27,16 @@ const HeroSection = () => {
               fill="#00A75D"
             />
           </svg>
-        </div>
+        </motion.div>
 
         {/* Text Content */}
-        <div className="lg:max-w-[500px] order-2 md:order-1">
-          <h1 className="text-xl sm:text-2xl lg:text-3xl md:text-4xl font-light">
+        <motion.div
+          className="lg:max-w-[550px] order-2 md:order-1 text-center lg:text-left"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-light leading-snug mb-8 text-white">
             Promovemos la vinculación y{" "}
             <span className="text-secondary font-semibold">
               participación ciudadana
@@ -38,7 +49,7 @@ const HeroSection = () => {
           >
             Conoce más
           </Button>
-        </div>
+        </motion.div>
       </div>
     </Page>
   );

@@ -1,22 +1,41 @@
 import React from "react";
-import LogoCircular from "../../images/civico.gif"; // cambia a tu ruta real
+import LogoCircular from "../../images/civico.gif";
 import Button from "../shared/Button";
 import Page from "../layout/Page";
+import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
 
 export default function CivicSection() {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.5,
+  });
+
   return (
     <Page>
-      <div className="mx-auto flex flex-col lg:flex-row items-start justify-between items-center gap-16">
-        <div className="md:order-2 relative w-[400px] h-[400px] rounded-full overflow-hidden border-4 border-white shadow-lg">
-          {/* GIF de fondo */}
+      <div
+        ref={ref}
+        className="mx-auto flex flex-col lg:flex-row items-start justify-between items-center gap-16"
+      >
+        <motion.div
+          className="md:order-2 relative max-w-100 sm:w-[400px] sm:h-[400px] rounded-full overflow-hidden border-4 border-white shadow-lg"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={inView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           <img
             src={LogoCircular}
             alt="Consejo Cívico"
             className="w-full h-full object-cover"
           />
-        </div>
-        {/* Texto */}
-        <div className="flex flex-col gap-16 max-w-2xl">
+        </motion.div>
+
+        <motion.div
+          className="flex flex-col gap-16 max-w-2xl"
+          initial={{ opacity: 0, y: 40 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
           <div>
             <h2 className="text-2xl md:text-3xl font-semibold text-primary mb-6">
               Nuestra ciudad es resultado de la <br />
@@ -47,7 +66,7 @@ export default function CivicSection() {
               ciudadana, aportando datos y espacios de rendición de cuentas.
             </p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </Page>
   );

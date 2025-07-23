@@ -1,4 +1,7 @@
 import React from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import Page from "../layout/Page";
 
 import Alianza1 from "../../images/alianzas/alianza1.png";
 import Alianza2 from "../../images/alianzas/alianza2.png";
@@ -35,7 +38,6 @@ import Alianza32 from "../../images/alianzas/alianza32.png";
 import Alianza33 from "../../images/alianzas/alianza33.png";
 import Alianza34 from "../../images/alianzas/alianza34.png";
 import Alianza35 from "../../images/alianzas/alianza35.png";
-import Page from "../layout/Page";
 
 const logos = [
   Alianza1,
@@ -76,17 +78,45 @@ const logos = [
 ];
 
 export default function AlliancesSection() {
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
+
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.04,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const logoVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { opacity: 1, scale: 1 },
+  };
+
   return (
     <Page className="bg-white">
-      <div className="container mx-auto">
-        <h2 className="text-secondary text-xl md:text-3xl font-semibold mb-12">
+      <div className="container mx-auto" ref={ref}>
+        <motion.h2
+          className="text-secondary text-xl md:text-3xl font-semibold mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+        >
           Alianzas
-        </h2>
+        </motion.h2>
 
-        <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-7 gap-y-8 gap-x-4 place-items-center">
+        <motion.div
+          className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-7 gap-y-8 gap-x-4 place-items-center"
+          variants={containerVariants}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+        >
           {logos.map((logo, idx) => (
-            <div
+            <motion.div
               key={idx}
+              variants={logoVariants}
               className="flex justify-center"
             >
               <img
@@ -94,9 +124,9 @@ export default function AlliancesSection() {
                 alt={`Aliado ${idx + 1}`}
                 className="w-full h-auto object-contain"
               />
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </Page>
   );

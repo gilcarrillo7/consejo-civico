@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useSwipeable } from "react-swipeable";
 import classNames from "classnames";
+import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
 
 type AxisItem = {
   title: string;
-  icon: string; // path to image
+  icon: string;
 };
 
 type AxesSectionProps = {
@@ -20,6 +22,7 @@ export default function AxesSection({
   theme = "primary",
 }: AxesSectionProps) {
   const [current, setCurrent] = useState(0);
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.5 });
 
   const handlePrev = () => {
     setCurrent((prev) => (prev === 0 ? axes.length - 1 : prev - 1));
@@ -40,24 +43,45 @@ export default function AxesSection({
   const circleClass = theme === "primary" ? "bg-secondary" : "bg-white";
   const textColorClass = theme === "primary" ? "text-white" : "text-primary";
 
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
     <section
+      ref={ref}
       className={classNames(bgClass, "py-16 px-4 text-center md:text-left")}
     >
       <div className="container mx-auto">
-        <h2
+        <motion.h2
           className={classNames(
             "text-2xl md:text-3xl font-semibold mb-12",
             textColorClass
           )}
+          initial={{ opacity: 0, y: -10 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
         >
           {title}
-        </h2>
+        </motion.h2>
 
         {/* Mobile: Carrusel con swipe */}
-        <div
+        <motion.div
           className="flex flex-col items-center md:hidden"
           {...swipeHandlers}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={inView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.5 }}
         >
           <div className="flex items-center justify-center gap-6">
             <button onClick={handlePrev} aria-label="Anterior">
@@ -86,12 +110,21 @@ export default function AxesSection({
               <ChevronRight size={60} className={textColorClass} />
             </button>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Desktop: todos los ejes visibles */}
-        <div className="hidden md:flex flex-wrap justify-around gap-4">
+        {/* Desktop */}
+        <motion.div
+          className="hidden md:flex flex-wrap justify-around gap-4"
+          variants={containerVariants}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+        >
           {axes.map((axis) => (
-            <div key={axis.title} className="flex flex-col items-center">
+            <motion.div
+              key={axis.title}
+              variants={itemVariants}
+              className="flex flex-col items-center"
+            >
               <div
                 className={classNames(
                   "w-[160px] h-[160px] rounded-full flex items-center justify-center mb-4",
@@ -103,9 +136,9 @@ export default function AxesSection({
               <span className={classNames("text-xl", textColorClass)}>
                 {axis.title}
               </span>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
