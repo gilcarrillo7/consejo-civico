@@ -2,7 +2,7 @@ import * as React from "react";
 import Layout from "../components/layout/Layout";
 import HeroSection from "../components/sections/HeroSection";
 import CivicSection from "../components/sections/CivicSection";
-import AxesSection from "../components/sections/AxesSection";
+import AxesSection from "../components/shared/AxesSection";
 
 import SeguridadIcon from "../images/icon-seguridad.svg";
 import JusticiaIcon from "../images/icon-justicia.svg";
@@ -28,10 +28,14 @@ const IndexPage = () => {
       <AxesSection
         title="Conoce nuestros ejes de trabajo"
         axes={axes}
-        theme="primary" // o "secondary"
+        theme="primary"
       />
-      <TeamSection />
-      <AlliancesSection />
+      <div id="equipo">
+        <TeamSection />
+      </div>
+      <div id="alianzas">
+        <AlliancesSection />
+      </div>
     </Layout>
   );
 };

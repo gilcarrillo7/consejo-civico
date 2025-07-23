@@ -6,11 +6,11 @@ import Logo from "../../images/logo.svg";
 import { Link } from "gatsby";
 
 const navItems = [
-  "Quiénes somos",
-  "Centro de integración ciudadana",
-  "Equipo",
-  "Alianzas",
-  "Contacto",
+  { link: "Quiénes somos", url: "" },
+  { link: "Centro de integración ciudadana", url: "" },
+  { link: "Equipo", url: "/#equipo" },
+  { link: "Alianzas", url: "/#alianzas" },
+  { link: "Contacto", url: "" },
 ];
 
 export default function Header() {
@@ -74,14 +74,16 @@ export default function Header() {
                   {navItems.map((item, index) => (
                     <motion.a
                       key={index}
-                      href="#"
+                      href={item.url}
                       className="hover:text-complementary transition"
                       variants={{
                         hidden: { opacity: 0, x: 0 },
                         visible: { opacity: 1, x: 0 },
                       }}
+                      onClick={() => setIsOpen(false)}
+                      role="button"
                     >
-                      {item}
+                      {item.link}
                     </motion.a>
                   ))}
                 </motion.nav>

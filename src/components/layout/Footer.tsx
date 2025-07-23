@@ -3,7 +3,7 @@ import Logo from "../../images/logo.svg";
 
 const iconClasses = "w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8";
 
-const TwitterX = () => (
+export const TwitterX = () => (
   <svg
     className={iconClasses}
     xmlns="http://www.w3.org/2000/svg"
@@ -20,7 +20,7 @@ const TwitterX = () => (
     />
   </svg>
 );
-const Facebook = () => (
+export const Facebook = () => (
   <svg
     className={iconClasses}
     xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +35,7 @@ const Facebook = () => (
     />
   </svg>
 );
-const Instagram = () => (
+export const Instagram = () => (
   <svg
     className={iconClasses}
     xmlns="http://www.w3.org/2000/svg"
@@ -58,7 +58,7 @@ const Instagram = () => (
     />
   </svg>
 );
-const Linkedin = () => (
+export const Linkedin = () => (
   <svg
     className={iconClasses}
     xmlns="http://www.w3.org/2000/svg"
@@ -78,6 +78,22 @@ const Linkedin = () => (
     />
   </svg>
 );
+export const SocialIcons = ({ className }: { className: string }) => (
+  <div className={className}>
+    <a href="https://x.com" target="_blank" rel="noopener noreferrer">
+      <TwitterX />
+    </a>
+    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+      <Facebook />
+    </a>
+    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+      <Instagram />
+    </a>
+    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+      <Linkedin />
+    </a>
+  </div>
+);
 
 export default function Footer() {
   return (
@@ -89,32 +105,7 @@ export default function Footer() {
         </div>
 
         {/* Redes sociales */}
-        <div className="flex gap-4 sm:gap-8 text-white">
-          <a href="https://x.com" target="_blank" rel="noopener noreferrer">
-            <TwitterX />
-          </a>
-          <a
-            href="https://facebook.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Facebook />
-          </a>
-          <a
-            href="https://instagram.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Instagram />
-          </a>
-          <a
-            href="https://linkedin.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Linkedin />
-          </a>
-        </div>
+        <SocialIcons className="flex gap-4 sm:gap-8 text-white" />
 
         <div className="hidden md:block" />
       </div>

@@ -111,9 +111,9 @@ export default function AxesSection({
           </div>
         </motion.div>
 
-        {/* Desktop: Grid */}
+        {/* Desktop: Grid with equal columns */}
         <motion.div
-          className="hidden md:flex flex-wrap justify-around gap-4"
+          className="hidden md:grid grid-cols-4 gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -123,7 +123,7 @@ export default function AxesSection({
             <motion.div
               key={axis.title}
               variants={itemVariants}
-              className="flex flex-col items-center"
+              className="flex flex-col items-center text-center"
             >
               <div
                 className={classNames(
