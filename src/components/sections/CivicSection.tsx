@@ -3,6 +3,7 @@ import LogoCircular from "../../images/civico.gif";
 import Button from "../shared/Button";
 import Page from "../layout/Page";
 import { motion } from "framer-motion";
+import { navigate } from "gatsby";
 
 export default function CivicSection() {
   return (
@@ -45,7 +46,12 @@ export default function CivicSection() {
               la canalización de tus reportes ciudadanos.
             </p>
 
-            <Button variant="secondary">Leer más</Button>
+            <Button
+              variant="secondary"
+              onClick={() => navigate("/centro_integracion_ciudadana")}
+            >
+              Leer más
+            </Button>
           </div>
 
           <div>

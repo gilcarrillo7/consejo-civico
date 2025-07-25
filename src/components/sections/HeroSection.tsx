@@ -2,12 +2,12 @@ import React from "react";
 import { motion } from "framer-motion";
 import Page from "../layout/Page";
 import Button from "../shared/Button";
+import { navigate } from "gatsby";
 
 const HeroSection = () => {
   return (
     <Page className="bg-primary overflow-hidden">
       <div className="container mx-auto flex flex-col lg:flex-row justify-between items-center gap-16 py-16">
-        {/* Decorative Image */}
         <motion.div
           className="order-1 lg:order-2"
           initial={{ opacity: 0, x: 100 }}
@@ -29,7 +29,6 @@ const HeroSection = () => {
           </svg>
         </motion.div>
 
-        {/* Text Content */}
         <motion.div
           className="lg:max-w-[550px] order-2 md:order-1 text-center lg:text-left"
           initial={{ opacity: 0, y: 40 }}
@@ -45,7 +44,7 @@ const HeroSection = () => {
           </h1>
           <Button
             variant="outline"
-            onClick={() => console.log("Click en conoce más")}
+            onClick={() => navigate("/quienes_somos")}
           >
             Conoce más
           </Button>

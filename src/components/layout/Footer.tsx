@@ -80,16 +80,28 @@ export const Linkedin = () => (
 );
 export const SocialIcons = ({ className }: { className: string }) => (
   <div className={className}>
-    <a href="https://x.com" target="_blank" rel="noopener noreferrer">
+    <a href="https://x.com/CICsal" target="_blank" rel="noopener noreferrer">
       <TwitterX />
     </a>
-    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+    <a
+      href="https://www.facebook.com/consejocivicodeinstitucionesdecoahuila"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <Facebook />
     </a>
-    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+    <a
+      href="https://www.instagram.com/explore/locations/514617995269875/consejo-civico-de-instituciones-de-coahuila-ac/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <Instagram />
     </a>
-    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+    <a
+      href="https://www.linkedin.com/company/ccicoah/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <Linkedin />
     </a>
   </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "../shared/Button";
 import { motion } from "framer-motion";
+import { navigate } from "gatsby";
 
 export default function ProgramsSection() {
   return (
@@ -36,7 +37,12 @@ export default function ProgramsSection() {
               Un puente entre ciudadanía y gobierno, entre reportes ciudadanos y
               soluciones.
             </p>
-            <Button variant="outline-secondary">Leer más</Button>
+            <Button
+              variant="outline-secondary"
+              onClick={() => navigate("/centro_integracion_ciudadana")}
+            >
+              Leer más
+            </Button>
           </motion.div>
 
           <motion.div

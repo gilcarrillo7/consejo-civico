@@ -30,4 +30,6 @@ export default function Landing() {
   );
 }
 
-export const Head: HeadFC = () => <SEO title="Centro Salitllo" />;
+export const Head: HeadFC = () => (
+  <SEO title="Centro de Integración Ciudadana" />
+);

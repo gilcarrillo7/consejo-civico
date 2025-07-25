@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import Page from "../layout/Page";
 import OrganigramaImage from "../../images/organigrama.png"; // Asegúrate de tener esta imagen en tu ruta
 import Button from "../shared/Button";
+import { navigate } from "gatsby";
 
 export default function OrganigramSection() {
   return (
@@ -49,7 +50,11 @@ export default function OrganigramSection() {
           viewport={{ once: true }}
           className="w-full text-center mt-8"
         >
-          <Button variant="primary" containerClassName="!text-center">
+          <Button
+            variant="primary"
+            containerClassName="!text-center"
+            onClick={() => navigate("/contacto")}
+          >
             Contacto
           </Button>
         </motion.div>

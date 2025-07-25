@@ -4,6 +4,8 @@ import Page from "../components/layout/Page";
 import Layout from "../components/layout/Layout";
 import Button from "../components/shared/Button";
 import { SocialIcons } from "../components/layout/Footer";
+import { HeadFC } from "gatsby";
+import { SEO } from "../components/layout/SEO";
 
 export default function Contacto() {
   const fadeInUp = (delay = 0) => ({
@@ -79,7 +81,10 @@ export default function Contacto() {
                 <br />
                 Teléfono: 844-485-07-66
                 <br />
-                Email: info@ccic.org.mx
+                Email:{" "}
+                <a href="mailto:info@ccic.org.mx" className="hover:underline">
+                  info@ccic.org.mx
+                </a>
               </p>
             </div>
 
@@ -93,3 +98,5 @@ export default function Contacto() {
     </Layout>
   );
 }
+
+export const Head: HeadFC = () => <SEO title="Contacto" />;

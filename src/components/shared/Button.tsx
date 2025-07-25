@@ -22,7 +22,7 @@ const Button = ({
 
   const variantClasses = {
     outline:
-      "w-[220px] mx-auto mt-8 border border-white text-white hover:bg-white hover:text-primary",
+      "w-[220px] mx-auto mt-8 border border-white text-white hover:border-secondary hover:text-secondary",
     primary:
       "w-[220px] mx-auto border bg-primary border-primary text-white hover:bg-white hover:border-primary hover:text-primary",
     secondary:

@@ -3,6 +3,78 @@ import Page from "../layout/Page";
 import EquipoImage from "../../images/equipo.png";
 import Button from "../shared/Button";
 import { motion } from "framer-motion";
+import { navigate } from "gatsby";
+
+function AnimationFranjas() {
+  return (
+    <>
+      <motion.div
+        className="absolute inset-0 z-0"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <div
+          className="absolute w-[300%] h-[100px] bg-primary"
+          style={{
+            top: "0",
+            left: "-150%",
+            transform: "rotate(-45deg)",
+          }}
+        />
+      </motion.div>
+      <motion.div
+        className="absolute inset-0 z-0"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.6 }}
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <div
+          className="absolute w-[300%] h-[100px] bg-primary"
+          style={{
+            top: "75",
+            left: "-100%",
+            transform: "rotate(-45deg)",
+          }}
+        />
+      </motion.div>
+      <motion.div
+        className="absolute inset-0 z-0"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.9 }}
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <div
+          className="absolute w-[300%] h-[100px] bg-primary"
+          style={{
+            top: "125",
+            left: "-50%",
+            transform: "rotate(-45deg)",
+          }}
+        />
+      </motion.div>
+      <motion.div
+        className="absolute inset-0 z-0"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 1.2 }}
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <div
+          className="absolute w-[300%] h-[100px] bg-primary"
+          style={{
+            top: "150",
+            left: "0",
+            transform: "rotate(-45deg)",
+          }}
+        />
+      </motion.div>
+    </>
+  );
+}
 
 export default function TeamSection() {
   const listVariants = {
@@ -24,7 +96,7 @@ export default function TeamSection() {
     <Page className="bg-secondary text-primary">
       <div className="container mx-auto">
         <motion.h2
-          className="text-2xl md:text-3xl font-semibold text-primary text-center md:text-left sm:mb-12"
+          className="text-2xl md:text-3xl font-semibold text-primary text-center md:text-left mb-8 sm:mb-12"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -33,43 +105,35 @@ export default function TeamSection() {
           Nuestro equipo
         </motion.h2>
 
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
-          <motion.div
-            className="relative max-w-xl"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            <div className="relative z-10">
-              <img
-                src={EquipoImage}
-                alt="Nuestro equipo"
-                className="w-full h-auto object-cover"
-              />
-            </div>
-            <div className="absolute inset-0 z-0 flex justify-between items-center px-4">
-              <div className="h-full w-[20px] bg-primary clip-diagonal-left" />
-              <div className="h-full w-[20px] bg-primary clip-diagonal-right" />
-            </div>
-          </motion.div>
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 relative z-0">
+          {/* Imagen con animación y franjas detrás */}
+          <div className="relative max-w-xl z-10 overflow-hidden p-6">
+            <img
+              src={EquipoImage}
+              alt="Nuestro equipo"
+              className="w-full h-auto object-cover relative z-10"
+            />
 
+            <AnimationFranjas />
+          </div>
+
+          {/* Texto y nombres del equipo */}
           <motion.div
-            className="max-w-xl space-y-6 text-left text-primary"
+            className="max-w-xl space-y-6 text-left text-primary z-10"
             variants={listVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
           >
             <motion.p
-              className="font-bold text-lg text-[#2C1A84]"
+              className="font-bold text-lg text-primary"
               variants={itemVariant}
             >
               La sociedad organizada tiene el poder de cambiar lo que sea que se
               proponga.
             </motion.p>
 
-            <motion.p className="text-[#2C1A84]" variants={itemVariant}>
+            <motion.p className="text-primary" variants={itemVariant}>
               <strong>
                 Nuestro equipo impulsa los cambios que la ciudadanía de Saltillo
                 necesita.
@@ -78,12 +142,12 @@ export default function TeamSection() {
               participen en nuestros programas.
             </motion.p>
 
-            <motion.p className="text-[#2C1A84]" variants={itemVariant}>
+            <motion.p className="text-primary" variants={itemVariant}>
               ¡La ciudad y tu comunidad se verán beneficiadas por tu acción!
             </motion.p>
 
             <motion.ul
-              className="text-[#2C1A84] space-y-1"
+              className="text-primary space-y-1"
               variants={listVariants}
             >
               <motion.li variants={itemVariant}>
@@ -109,7 +173,9 @@ export default function TeamSection() {
             </motion.ul>
 
             <motion.div variants={itemVariant}>
-              <Button variant="primary">Contacto</Button>
+              <Button variant="primary" onClick={() => navigate("/contacto")}>
+                Contacto
+              </Button>
             </motion.div>
           </motion.div>
         </div>
