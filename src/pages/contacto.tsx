@@ -17,7 +17,7 @@ export default function Contacto() {
 
   return (
     <Layout hideFooter={true}>
-      <Page className="bg-secondary text-white px-4 py-16 mx-auto">
+      <Page className="bg-secondary text-white px-4 pt-24 pb-16 py-sm-16 mx-auto">
         <motion.h2
           className="text-center text-xl md:text-2xl lg:text-3xl text-primary mb-12 md:mb-24"
           {...fadeInUp(0)}

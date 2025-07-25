@@ -4,11 +4,10 @@ import ReactPlayer from "react-player";
 import Page from "../layout/Page";
 
 export default function CentroSection() {
-  const [playing, setPlaying] = useState(false);
 
   return (
-    <Page className="bg-primary text-white px-4 py-16">
-      <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between gap-8">
+    <Page className="bg-primary text-white px-4 py-24 py-sm-16">
+      <div className="mx-auto flex flex-col lg:flex-row items-center justify-between gap-8">
         <motion.div
           className="w-full lg:w-1/2 sm:px-8"
           initial={{ opacity: 0, scale: 0.9 }}

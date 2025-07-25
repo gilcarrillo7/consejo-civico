@@ -7,7 +7,7 @@ import { navigate } from "gatsby";
 const HeroSection = () => {
   return (
     <Page className="bg-primary overflow-hidden">
-      <div className="container mx-auto flex flex-col lg:flex-row justify-between items-center gap-16 py-16">
+      <div className="mx-auto flex flex-col lg:flex-row justify-between items-center gap-16 py-16">
         <motion.div
           className="order-1 lg:order-2"
           initial={{ opacity: 0, x: 100 }}

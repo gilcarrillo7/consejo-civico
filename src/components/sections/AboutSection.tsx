@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export default function AboutSection() {
   return (
     <Page className="bg-secondary text-white relative py-24">
-      <div className="container mx-auto relative z-10">
+      <div className="mx-auto relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           {/* SVG animado */}
           <motion.div
