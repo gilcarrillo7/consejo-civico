@@ -17,7 +17,7 @@ export default function Contacto() {
 
   return (
     <Layout hideFooter={true}>
-      <Page className="bg-secondary text-white px-4 pt-24 pb-16 py-sm-16 mx-auto">
+      <Page className="bg-secondary text-white px-4 pt-24 pb-16 mx-auto">
         <motion.h2
           className="text-center text-xl md:text-2xl lg:text-3xl text-primary mb-12 md:mb-24"
           {...fadeInUp(0)}
@@ -25,7 +25,7 @@ export default function Contacto() {
           ¡Construyamos en conjunto una mejor sociedad!
         </motion.h2>
 
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto text-lg lg:text-xl">
           <form className="w-full">
             <div className="w-full flex flex-col md:flex-row gap-12 md:gap-24 mb-12 md:mb-24">
               <motion.div className="flex flex-col md:w-1/2" {...fadeInUp(0.1)}>
@@ -70,7 +70,7 @@ export default function Contacto() {
           </form>
 
           <motion.div
-            className="flex flex-col md:flex-row justify-between gap-8 text-base max-w-4xl mx-auto"
+            className="text-base md:text-lg flex flex-col md:flex-row justify-between gap-8 text-base max-w-4xl mx-auto"
             {...fadeInUp(0.5)}
           >
             <div className="text-center md:text-left">

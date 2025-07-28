@@ -6,10 +6,10 @@ import Page from "../layout/Page";
 export default function CentroSection() {
 
   return (
-    <Page className="bg-primary text-white px-4 py-24 py-sm-16">
+    <Page className="bg-primary text-white px-4 py-24 sm:py-16">
       <div className="mx-auto flex flex-col lg:flex-row items-center justify-between gap-8">
         <motion.div
-          className="w-full lg:w-1/2 sm:px-8"
+          className="w-full lg:w-1/2 lg:px-8"
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
@@ -25,7 +25,7 @@ export default function CentroSection() {
           </div>
         </motion.div>
         <motion.div
-          className="w-full lg:w-1/2 space-y-6 text-lg sm:text-xl md:pl-16"
+          className="w-full lg:w-1/2 space-y-6 text-lg sm:text-xl lg:pl-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}

@@ -20,7 +20,7 @@ const HeroSection = () => {
             height="237"
             viewBox="0 0 629 237"
             fill="none"
-            className="scale-75 sm:scale-90 lg:scale-100 transition-transform duration-300"
+            className="scale-75 sm:scale-100 lg:scale-[120%] transition-transform duration-300"
           >
             <path
               d="M0.0800781 236.457H86.5047L322.203 0.773529H235.779L0.0800781 236.457ZM153.239 236.457H239.663L475.362 0.773529H388.941L153.239 236.457ZM305.917 236.457H392.342L628.036 0.773529H541.62L305.917 236.457Z"
@@ -30,12 +30,12 @@ const HeroSection = () => {
         </motion.div>
 
         <motion.div
-          className="lg:max-w-[550px] order-2 md:order-1 text-center lg:text-left"
+          className="lg:max-w-[600px] order-2 md:order-1 text-center lg:text-left"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-light leading-snug mb-8 text-white">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.5rem] lg:leading-[2.75rem] font-light leading-snug mb-8 text-white">
             Promovemos la vinculación y{" "}
             <span className="text-secondary font-semibold">
               participación ciudadana

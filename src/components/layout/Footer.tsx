@@ -91,14 +91,14 @@ export const SocialIcons = ({ className }: { className: string }) => (
       <Facebook />
     </a>
     <a
-      href="https://www.instagram.com/explore/locations/514617995269875/consejo-civico-de-instituciones-de-coahuila-ac/"
+      href="https://www.instagram.com/ccicoah"
       target="_blank"
       rel="noopener noreferrer"
     >
       <Instagram />
     </a>
     <a
-      href="https://www.linkedin.com/company/ccicoah/"
+      href="https://www.linkedin.com/company/ccicoahuila/"
       target="_blank"
       rel="noopener noreferrer"
     >

@@ -18,7 +18,7 @@ export default function ProgramsSection() {
         </motion.h2>
 
         <motion.div
-          className="grid md:grid-cols-2 gap-12 font-normal"
+          className="grid md:grid-cols-2 gap-12 md:gap-24 lg:gap-36 font-normal text-lg md:text-xl lg:text-2xl font-light"
           initial="hidden"
           whileInView="visible"
           transition={{ staggerChildren: 0.2, delay: 0.3 }}
@@ -30,7 +30,7 @@ export default function ProgramsSection() {
               visible: { opacity: 1, y: 0 },
             }}
           >
-            <h3 className="text-lg text-secondary mb-1">
+            <h3 className="text-secondary mb-1">
               Centro de Integración Ciudadana Saltillo
             </h3>
             <p className="mb-4">
@@ -51,10 +51,10 @@ export default function ProgramsSection() {
               visible: { opacity: 1, y: 0 },
             }}
           >
-            <h3 className="text-lg text-secondary mb-1">
-              Saltillo, ¿Cómo vamos?
-            </h3>
-            <p>Aportamos datos para mejorar la toma de decisiones públicas.</p>
+            <h3 className="text-secondary mb-1">Saltillo, ¿Cómo vamos?</h3>
+            <p className="">
+              Aportamos datos para mejorar la toma de decisiones públicas.
+            </p>
           </motion.div>
         </motion.div>
       </div>

@@ -9,7 +9,7 @@ const Page = ({
 }) => {
   return (
     <div
-      className={`min-h-screen flex items-center justify-center relative py-16 md:py-8 ${className}`}
+      className={`min-h-screen flex items-center justify-center relative py-16 md:py-40 xl:py-8 ${className}`}
     >
       <div className="container">{children}</div>
     </div>

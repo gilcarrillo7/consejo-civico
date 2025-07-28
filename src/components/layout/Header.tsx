@@ -22,7 +22,7 @@ export default function Header() {
   return (
     <header className="bg-transparent text-white w-full absolute top-0 left-0 z-50">
       {/* Header base */}
-      <div className="container mx-auto flex items-center justify-between py-4 py-sm-12 relative z-50">
+      <div className="container mx-auto flex items-center justify-between py-4 sm:py-8 md:py-16 relative z-50">
         <Link to="/">
           <img src={Logo} alt="Logo Consejo Cívico" className="h-12 md:h-16" />
         </Link>
@@ -62,7 +62,7 @@ export default function Header() {
             >
               <div className="container mx-auto py-12 flex flex-col gap-10">
                 <motion.nav
-                  className="flex flex-col gap-12 text-2xl sm:text-3xl lg:text-4xl mt-24 lg:mt-32"
+                  className="flex flex-col gap-12 md:gap-16 lg:gap-20 text-2xl sm:text-3xl lg:text-4xl mt-24 md:mt-40"
                   initial="hidden"
                   animate="visible"
                   variants={{
@@ -86,7 +86,7 @@ export default function Header() {
                     >
                       <Link
                         to={item.url}
-                        className="hover:text-complementary hover:font-semibold transition"
+                        className="hover:text-secondary hover:text-complementary hover:font-semibold transition"
                       >
                         {item.link}
                       </Link>

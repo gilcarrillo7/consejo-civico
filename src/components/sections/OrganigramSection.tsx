@@ -38,7 +38,7 @@ export default function OrganigramSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
-          className="text-lg sm:text-xl font-semibold text-secondary mt-16"
+          className="text-lg sm:text-xl lg:text-2xl font-semibold text-secondary mt-16"
         >
           ¡Escríbenos y sumemos esfuerzos para construir una mejor sociedad!
         </motion.p>

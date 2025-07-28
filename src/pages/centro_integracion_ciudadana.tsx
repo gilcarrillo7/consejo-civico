@@ -18,8 +18,8 @@ export default function Landing() {
       title: "Comparte la ubicación, envía una foto y cuenta",
       icon: Icon2,
     },
-    { title: "Nuestro equipo canalizará tu reporte", icon: Icon3 },
-    { title: "Las autoridades se harán cargo", icon: Icon4 },
+    { title: "Nuestro equipo canalizará tu reporte", icon: Icon4 },
+    { title: "Las autoridades se harán cargo", icon: Icon3 },
   ];
   return (
     <Layout>
