@@ -13,13 +13,21 @@ import Icon4 from "../images/icon-saltillo4.svg";
 
 export default function Landing() {
   const axes = [
-    { title: "Detecta el problema", icon: Icon1 },
+    { title: "Detecta el problema.", icon: Icon1 },
     {
-      title: "Comparte la ubicación, envía una foto y cuenta",
+      title:
+        "Comparte la ubicación, envía una foto y cuenta de que se trata a través de nuestros canales (WhatsApp, X).",
       icon: Icon2,
     },
-    { title: "Nuestro equipo canalizará tu reporte", icon: Icon4 },
-    { title: "Las autoridades se harán cargo", icon: Icon3 },
+    {
+      title:
+        "Nuestro equipo canalizará tu reporte con las autoridades responsables.",
+      icon: Icon4,
+    },
+    {
+      title: "Las autoridades se harán cargo y brindarán la solución.",
+      icon: Icon3,
+    },
   ];
   return (
     <Layout>

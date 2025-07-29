@@ -11,7 +11,7 @@ export default function CivicSection() {
       <div className="flex flex-col lg:flex-row items-center gap-16">
         <div className="lg:order-2 relative sm:w-1/2 flex justify-center">
           <motion.div
-            className="h-[300px] w-[300px] sm:h-[350px] sm:w-[350px] lg:h-[400px] lg:w-[400px] rounded-full overflow-hidden border-4 border-white shadow-lg"
+            className="h-[300px] w-[300px] sm:h-[350px] sm:w-[350px] lg:h-[400px] lg:w-[400px] xl:h-[450px] xl:w-[450px] rounded-full overflow-hidden border-4 border-white shadow-lg"
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
@@ -31,7 +31,7 @@ export default function CivicSection() {
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true, amount: 0.5 }}
         >
-          <div>
+          <div className="md:mt-[-5rem]">
             <h2 className="text-secondary text-2xl md:text-3xl font-semibold text-primary mb-6">
               Nuestra ciudad es resultado de la{" "}
               <br className="hidden sm:block" />

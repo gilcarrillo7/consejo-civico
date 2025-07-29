@@ -33,8 +33,8 @@ export default function ReportStatsSection() {
           - 1,381 luminarias
           {"\n"}- 576 semáforos descompuestos
           {"\n"}- 352 baches
-          {"\n"}- 133 fugas de agua
-          {"\n"}- Mover 474 autos abandonados
+          {"\n"}- 331 fugas de agua
+          {"\n"}- Mover 74 autos abandonados
           {"\n"}- Tapar 49 alcantarillas
         </motion.p>
 

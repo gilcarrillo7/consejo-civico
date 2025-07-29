@@ -8,7 +8,7 @@ import { Link } from "gatsby";
 const navItems = [
   { link: "Quiénes somos", url: "/quienes_somos" },
   {
-    link: "Centro de integración ciudadana",
+    link: "Centro de Integración Ciudadana",
     url: "/centro_integracion_ciudadana",
   },
   { link: "Equipo", url: "/#equipo" },
@@ -23,8 +23,8 @@ export default function Header() {
     <header className="bg-transparent text-white w-full absolute top-0 left-0 z-50">
       {/* Header base */}
       <div className="container mx-auto flex items-center justify-between py-4 sm:py-8 md:py-16 relative z-50">
-        <Link to="/">
-          <img src={Logo} alt="Logo Consejo Cívico" className="h-12 md:h-16" />
+        <Link to="/" onClick={() => setIsOpen(false)}>
+          <img src={Logo} alt="Logo Consejo Cívico" className="h-12 md:h-16 lg:h-20" />
         </Link>
         <button
           onClick={() => setIsOpen(!isOpen)}

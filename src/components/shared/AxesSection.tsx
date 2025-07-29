@@ -39,7 +39,7 @@ export default function AxesSection({
 
   const bgClass = theme === "primary" ? "bg-primary" : "bg-secondary";
   const circleClass = theme === "primary" ? "bg-secondary" : "bg-white";
-  const textColorClass = theme === "primary" ? "text-white" : "text-primary";
+  const textColorClass = "text-white";
 
   const containerVariants = {
     hidden: {},
