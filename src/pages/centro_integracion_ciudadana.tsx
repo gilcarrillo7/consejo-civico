@@ -16,7 +16,7 @@ export default function Landing() {
     { title: "Detecta el problema.", icon: Icon1 },
     {
       title:
-        "Comparte la ubicación, envía una foto y cuenta de que se trata a través de nuestros canales (WhatsApp, X).",
+        'Comparte la ubicación, envía una foto y cuenta de qué se trata a través de nuestro <a href="https://wa.me/5218445060242" target="_blank" rel="noopener noreferrer" class="font-bold underline">WhatsApp</a>.',
       icon: Icon2,
     },
     {

@@ -4,7 +4,6 @@ import ReactPlayer from "react-player";
 import Page from "../layout/Page";
 
 export default function CentroSection() {
-
   return (
     <Page className="bg-primary text-white px-4 py-24 sm:py-16">
       <div className="mx-auto flex flex-col lg:flex-row items-center justify-between gap-8">
@@ -35,16 +34,20 @@ export default function CentroSection() {
             Centro de Integración Ciudadana Saltillo
           </h2>
           <p>
-            Un reporte ciudadano es la documentación de un problema que será
-            canalizado por nuestro equipo a las autoridades responsables.
+            A través de un reporte ciudadano, en conjunto contigo, le
+            solicitamos a nuestras autoridades atender cuestiones públicas
+            pendientes en Saltillo.
           </p>
           <p>
-            Es posible reportar en tiempo real cualquier inconveniente que se
-            detecte en el espacio público, como baches, luminarias defectuosas,
-            semáforos descompuestos y residuos acumulados, entre otros.
+            Desde 2012, la ciudadanía participa en nuestro programa reportando
+            baches, luminarias dañadas, semáforos descompuestos, residuos
+            acumulados, entre otros, y nosotros los canalizamos. Si bien la
+            respuesta de las autoridades toma tiempo dependiendo de la temática,
+            mientras más personas observemos y reportemos, más visibilidad
+            tendremos.
           </p>
           <p className="font-bold text-secondary">
-            Contribuir para el bienestar de tu comunidad nunca fue tan fácil y
+            Contribuir al bienestar de tu comunidad nunca fue tan fácil y
             rápido.
           </p>
         </motion.div>

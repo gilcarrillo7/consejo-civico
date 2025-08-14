@@ -48,16 +48,7 @@ export default function ReportStatsSection() {
         </motion.p>
 
         <motion.p {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.4 }}>
-          Lo puedes hacer a través de nuestra cuenta en{" "}
-          <a
-            href="https://x.com/CICsal"
-            className="font-bold underline"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            X
-          </a>{" "}
-          o a través de nuestro{" "}
+          Lo puedes hacer a través de nuestro{" "}
           <a
             href="https://wa.me/5218445060242"
             target="_blank"

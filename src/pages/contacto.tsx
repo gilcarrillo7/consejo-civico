@@ -79,7 +79,7 @@ export default function Contacto() {
                 <br className="hidden md:block" />
                 Los Pinos, Saltillo, Coahuila.
                 <br />
-                Teléfono: 844-485-07-66
+                Teléfono: 844-485-07-60
                 <br />
                 Email:{" "}
                 <a href="mailto:info@ccic.org.mx" className="hover:underline">
