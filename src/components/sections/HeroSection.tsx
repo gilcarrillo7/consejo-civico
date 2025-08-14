@@ -4,7 +4,18 @@ import Page from "../layout/Page";
 import Button from "../shared/Button";
 import { navigate } from "gatsby";
 
-const HeroSection = () => {
+type HeroSectionProps = {
+  data: {
+    title: string;
+    highlight: string;
+    buttonText: string;
+    buttonLink: string;
+  };
+};
+
+const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
+  const { title, highlight, buttonText, buttonLink } = data;
+  const parts = title.split(highlight);
   return (
     <Page className="bg-primary overflow-hidden">
       <div className="mx-auto flex flex-col lg:flex-row justify-between items-center gap-16 py-16">
@@ -36,17 +47,12 @@ const HeroSection = () => {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.5rem] lg:leading-[2.75rem] font-light leading-snug mb-8 text-white">
-            Promovemos la vinculación y{" "}
-            <span className="text-secondary font-semibold">
-              participación ciudadana
-            </span>{" "}
-            para construir una mejor sociedad.
+            {parts[0]}
+            <span className="text-secondary font-semibold">{highlight}</span>
+            {parts[1]}
           </h1>
-          <Button
-            variant="outline"
-            onClick={() => navigate("/quienes_somos")}
-          >
-            Conoce más
+          <Button variant="outline" onClick={() => navigate("/quienes_somos")}>
+            {buttonText}
           </Button>
         </motion.div>
       </div>

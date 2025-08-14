@@ -1,0 +1,27 @@
+{
+  "title": "Nuestro equipo",
+  "quote": "La sociedad organizada tiene el poder de cambiar lo que sea que se proponga.",
+  "description": "Nuestro equipo impulsa los cambios que la ciudadanía de Saltillo necesita. Para representarte, necesitamos que tú y tu entorno social participen en nuestros programas.",
+  "note": "¡La ciudad y tu comunidad se verán beneficiadas por tu acción!",
+  "members": [
+    {
+      "name": "Sara Martha Arizpe Ramos",
+      "role": "Directora Ejecutiva"
+    },
+    {
+      "name": "Edgar Alejandro Calvillo Cepeda",
+      "role": "Coordinador Administrativo"
+    },
+    {
+      "name": "Felipe de Jesús López Delgado",
+      "role": "Coordinador de Innovación"
+    },
+    {
+      "name": "Ana Izel Fraire González",
+      "role": "Coordinadora de Comunicación"
+    }
+  ],
+  "buttonText": "Contacto",
+  "buttonLink": "/contacto",
+  "image": "equipo.png"
+}

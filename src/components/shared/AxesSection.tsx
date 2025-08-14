@@ -95,13 +95,13 @@ export default function AxesSection({
                 )}
               >
                 <img
-                  src={axes[current].icon}
-                  alt={axes[current].title}
+                  src={axes[current]?.icon}
+                  alt={axes[current]?.title}
                   className="w-20 h-20"
                 />
               </div>
               <span className={classNames("text-xl", textColorClass)}>
-                {axes[current].title}
+                {axes[current]?.title}
               </span>
             </div>
 

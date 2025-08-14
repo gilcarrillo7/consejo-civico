@@ -1,82 +1,52 @@
 import React from "react";
 import Page from "../layout/Page";
-import EquipoImage from "../../images/equipo.png";
 import Button from "../shared/Button";
 import { motion } from "framer-motion";
 import { navigate } from "gatsby";
+import type { TeamData } from "../../types";
 
 function AnimationFranjas() {
   return (
     <>
-      <motion.div
-        className="absolute inset-0 z-0"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        <div
-          className="absolute w-[300%] h-[100px] bg-primary"
-          style={{
-            top: "0",
-            left: "-150%",
-            transform: "rotate(-45deg)",
-          }}
-        />
-      </motion.div>
-      <motion.div
-        className="absolute inset-0 z-0"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.6 }}
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        <div
-          className="absolute w-[300%] h-[100px] bg-primary"
-          style={{
-            top: "75",
-            left: "-100%",
-            transform: "rotate(-45deg)",
-          }}
-        />
-      </motion.div>
-      <motion.div
-        className="absolute inset-0 z-0"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.9 }}
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        <div
-          className="absolute w-[300%] h-[100px] bg-primary"
-          style={{
-            top: "125",
-            left: "-50%",
-            transform: "rotate(-45deg)",
-          }}
-        />
-      </motion.div>
-      <motion.div
-        className="absolute inset-0 z-0"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 1.2 }}
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        <div
-          className="absolute w-[300%] h-[100px] bg-primary"
-          style={{
-            top: "150",
-            left: "0",
-            transform: "rotate(-45deg)",
-          }}
-        />
-      </motion.div>
+      {[0, 75, 125, 150].map((top, i) => (
+        <motion.div
+          key={i}
+          className="absolute inset-0 z-0"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.3 + i * 0.3 }}
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <div
+            className="absolute w-[300%] h-[100px] bg-primary"
+            style={{
+              top: `${top}`,
+              left: `${-150 + i * 50}%`,
+              transform: "rotate(-45deg)",
+            }}
+          />
+        </motion.div>
+      ))}
     </>
   );
 }
 
-export default function TeamSection() {
+type Props = {
+  data: TeamData;
+};
+
+export default function TeamSection({ data }: Props) {
+  const {
+    title,
+    quote,
+    description,
+    note,
+    members,
+    buttonText,
+    buttonLink,
+    image,
+  } = data;
+
   const listVariants = {
     hidden: {},
     visible: {
@@ -102,22 +72,21 @@ export default function TeamSection() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true, amount: 0.3 }}
         >
-          Nuestro equipo
+          {title}
         </motion.h2>
 
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12 relative z-0">
           {/* Imagen con animación y franjas detrás */}
           <div className="relative max-w-xl z-10 overflow-hidden p-6">
             <img
-              src={EquipoImage}
+              src={image}
               alt="Nuestro equipo"
               className="w-full h-auto object-cover relative z-10"
             />
-
             <AnimationFranjas />
           </div>
 
-          {/* Texto y nombres del equipo */}
+          {/* Texto y miembros del equipo */}
           <motion.div
             className="max-w-xl space-y-6 text-left text-primary z-10"
             variants={listVariants}
@@ -129,52 +98,33 @@ export default function TeamSection() {
               className="font-bold text-lg text-primary"
               variants={itemVariant}
             >
-              La sociedad organizada tiene el poder de cambiar lo que sea que se
-              proponga.
+              {quote}
             </motion.p>
 
             <motion.p className="text-primary" variants={itemVariant}>
-              <strong>
-                Nuestro equipo impulsa los cambios que la ciudadanía de Saltillo
-                necesita.
-              </strong>{" "}
-              Para representarte, necesitamos que tú y tu entorno social
-              participen en nuestros programas.
+              <strong>{description}</strong>
             </motion.p>
 
             <motion.p className="text-primary" variants={itemVariant}>
-              ¡La ciudad y tu comunidad se verán beneficiadas por tu acción!
+              {note}
             </motion.p>
 
             <motion.ul
               className="text-primary space-y-1"
               variants={listVariants}
             >
-              <motion.li variants={itemVariant}>
-                <strong>Sara Martha Arizpe Ramos</strong>
-                <br />
-                Directora Ejecutiva
-              </motion.li>
-              <motion.li variants={itemVariant}>
-                <strong>Edgar Alejandro Calvillo Cepeda</strong>
-                <br />
-                Coordinador Administrativo
-              </motion.li>
-              <motion.li variants={itemVariant}>
-                <strong>Felipe de Jesús López Delgado</strong>
-                <br />
-                Coordinador de Innovación
-              </motion.li>
-              <motion.li variants={itemVariant}>
-                <strong>Ana Izel Fraire González</strong>
-                <br />
-                Coordinadora de Comunicación
-              </motion.li>
+              {members?.map((member, index) => (
+                <motion.li key={index} variants={itemVariant}>
+                  <strong>{member.name}</strong>
+                  <br />
+                  {member.role}
+                </motion.li>
+              ))}
             </motion.ul>
 
             <motion.div variants={itemVariant}>
-              <Button variant="primary" onClick={() => navigate("/contacto")}>
-                Contacto
+              <Button variant="primary" onClick={() => navigate(buttonLink)}>
+                {buttonText}
               </Button>
             </motion.div>
           </motion.div>
