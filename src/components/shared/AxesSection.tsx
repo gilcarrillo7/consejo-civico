@@ -133,9 +133,10 @@ export default function AxesSection({
               >
                 <img src={axis.icon} alt={axis.title} className="w-20 h-20" />
               </div>
-              <span className={classNames("text-xl", textColorClass)}>
-                {axis.title}
-              </span>
+              <div
+                className={classNames("text-xl", textColorClass)}
+                dangerouslySetInnerHTML={{ __html: axis.title }}
+              />
             </motion.div>
           ))}
         </motion.div>
