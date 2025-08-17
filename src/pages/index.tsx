@@ -32,7 +32,7 @@ const IndexPage = () => {
   const { data: alliancesData, loading: loadingAlliances } =
     useRemoteData<AlliancesData>("/mock/alliances.json", alliancesFallback);
 
-  if (loadingHomepage || loadingCivic || loadingTeam)
+  if (loadingHomepage || loadingCivic || loadingTeam || loadingAlliances)
     return <ClipLoader color="#00A75D" />;
 
   return (

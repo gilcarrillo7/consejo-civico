@@ -1,0 +1,19 @@
+{
+  "title": "¿Cómo funciona?",
+  "theme": "secondary",
+  "axes": [
+    { "title": "Detecta el problema.", "icon": "/icon-saltillo1.svg" },
+    {
+      "title": "Comparte la ubicación, envía una foto y cuenta de qué se trata a través de nuestro <a href=\"https://wa.me/5218445060242\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"font-bold underline\">WhatsApp</a>.",
+      "icon": "/icon-saltillo2.svg"
+    },
+    {
+      "title": "Nuestro equipo canalizará tu reporte con las autoridades responsables.",
+      "icon": "/icon-saltillo4.svg"
+    },
+    {
+      "title": "Las autoridades se harán cargo y brindarán la solución.",
+      "icon": "/icon-saltillo3.svg"
+    }
+  ]
+}

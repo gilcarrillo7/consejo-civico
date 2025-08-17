@@ -1,0 +1,13 @@
+{
+  "title": "Organigrama institucional",
+  "image": {
+    "src": "/organigrama.jpg",
+    "alt": "Organigrama institucional"
+  },
+  "subtitle": "¡Escríbenos y sumemos esfuerzos para construir una mejor sociedad!",
+  "cta": {
+    "text": "Contacto",
+    "link": "/contacto",
+    "variant": "primary"
+  }
+}

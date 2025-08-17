@@ -1,0 +1,17 @@
+{
+  "period": "2022 a 2024",
+  "totalReports": 2700,
+  "intro": "De 2022 a 2024, hemos logrado canalizar exitosamente más de",
+  "repairedTitle": "Gracias a nuestra intervención se han reparado:",
+  "breakdown": [
+    { "label": "luminarias", "value": 1381 },
+    { "label": "semáforos descompuestos", "value": 576 },
+    { "label": "baches", "value": 352 },
+    { "label": "fugas de agua", "value": 331 },
+    { "label": "autos abandonados", "value": 74, "prefix": "Mover " },
+    { "label": "alcantarillas", "value": 49, "prefix": "Tapar " }
+  ],
+  "ctaLine": "Sé parte de la solución y comienza a enviar tus reportes. ¡Es muy fácil!",
+  "whatsappText": "Lo puedes hacer a través de nuestro",
+  "whatsappLink": "https://wa.me/5218445060242"
+}

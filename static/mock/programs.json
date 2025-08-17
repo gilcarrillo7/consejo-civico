@@ -1,0 +1,15 @@
+{
+  "sectionTitle": "Nuestros programas",
+  "items": [
+    {
+      "title": "Centro de Integración Ciudadana Saltillo",
+      "description": "Un puente entre ciudadanía y gobierno, entre reportes ciudadanos y soluciones.",
+      "buttonText": "Leer más",
+      "buttonLink": "/centro_integracion_ciudadana"
+    },
+    {
+      "title": "Saltillo, ¿Cómo vamos?",
+      "description": "Aportamos datos para mejorar la toma de decisiones públicas."
+    }
+  ]
+}
