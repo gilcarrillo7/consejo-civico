@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Page from "../layout/Page";
-import OrganigramaImage from "../../images/organigrama.png"; // Asegúrate de tener esta imagen en tu ruta
+import OrganigramaImage from "../../images/organigrama.jpg"; // Asegúrate de tener esta imagen en tu ruta
 import Button from "../shared/Button";
 import { navigate } from "gatsby";
 
