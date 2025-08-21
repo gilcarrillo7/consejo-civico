@@ -1,9 +1,30 @@
+// components/sections/ProgramsSection.tsx
 import React from "react";
 import Button from "../shared/Button";
 import { motion } from "framer-motion";
 import { navigate } from "gatsby";
+import type { ProgramsData, ProgramItem } from "../../types";
 
-export default function ProgramsSection() {
+type Props = { data: ProgramsData };
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0 },
+};
+
+export default function ProgramsSection({ data }: Props) {
+  const { sectionTitle = "Nuestros programas", items } = data;
+
+  const handleClick = (item: ProgramItem) => {
+    if (!item.buttonLink) return;
+    // Navegación interna si parece ruta relativa; externa si es URL absoluta
+    if (item.buttonLink.startsWith("http")) {
+      window.location.href = item.buttonLink;
+    } else {
+      navigate(item.buttonLink);
+    }
+  };
+
   return (
     <section className="bg-primary text-white py-20">
       <div className="container mx-auto space-y-10">
@@ -14,7 +35,7 @@ export default function ProgramsSection() {
           transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true }}
         >
-          Nuestros programas
+          {sectionTitle}
         </motion.h2>
 
         <motion.div
@@ -24,38 +45,21 @@ export default function ProgramsSection() {
           transition={{ staggerChildren: 0.2, delay: 0.3 }}
           viewport={{ once: true }}
         >
-          <motion.div
-            variants={{
-              hidden: { opacity: 0, y: 30 },
-              visible: { opacity: 1, y: 0 },
-            }}
-          >
-            <h3 className="text-secondary mb-1">
-              Centro de Integración Ciudadana Saltillo
-            </h3>
-            <p className="mb-4">
-              Un puente entre ciudadanía y gobierno, entre reportes ciudadanos y
-              soluciones.
-            </p>
-            <Button
-              variant="outline-secondary"
-              onClick={() => navigate("/centro_integracion_ciudadana")}
-            >
-              Leer más
-            </Button>
-          </motion.div>
+          {items.map((item, idx) => (
+            <motion.div key={idx} variants={itemVariants}>
+              <h3 className="text-secondary mb-1">{item.title}</h3>
+              <p className="mb-4">{item.description}</p>
 
-          <motion.div
-            variants={{
-              hidden: { opacity: 0, y: 30 },
-              visible: { opacity: 1, y: 0 },
-            }}
-          >
-            <h3 className="text-secondary mb-1">Saltillo, ¿Cómo vamos?</h3>
-            <p className="">
-              Aportamos datos para mejorar la toma de decisiones públicas.
-            </p>
-          </motion.div>
+              {item.buttonText && item.buttonLink && (
+                <Button
+                  variant="outline-secondary"
+                  onClick={() => handleClick(item)}
+                >
+                  {item.buttonText}
+                </Button>
+              )}
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>

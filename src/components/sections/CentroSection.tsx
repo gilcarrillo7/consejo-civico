@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+// components/sections/CentroSection.tsx
+import React from "react";
 import { motion } from "framer-motion";
 import ReactPlayer from "react-player";
 import Page from "../layout/Page";
+import type { CentroData } from "../../types";
 
-export default function CentroSection() {
+type Props = { data: CentroData };
+
+export default function CentroSection({ data }: Props) {
+  const { title, videoUrl, paragraphs, highlightIndices = [] } = data;
+
   return (
     <Page className="bg-primary text-white px-4 py-24 sm:py-16">
       <div className="mx-auto flex flex-col lg:flex-row items-center justify-between gap-8">
@@ -15,14 +21,10 @@ export default function CentroSection() {
           viewport={{ once: true, amount: 0.5 }}
         >
           <div className="aspect-video rounded overflow-hidden shadow-lg">
-            <ReactPlayer
-              width="100%"
-              height="100%"
-              controls
-              url={"https://vimeo.com/1103510859"}
-            />
+            <ReactPlayer width="100%" height="100%" controls url={videoUrl} />
           </div>
         </motion.div>
+
         <motion.div
           className="w-full lg:w-1/2 space-y-6 text-lg sm:text-xl lg:pl-16"
           initial={{ opacity: 0, y: 30 }}
@@ -30,26 +32,19 @@ export default function CentroSection() {
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
           viewport={{ once: true, amount: 0.5 }}
         >
-          <h2 className="text-secondary font-bold">
-            Centro de Integración Ciudadana Saltillo
-          </h2>
-          <p>
-            A través de un reporte ciudadano, en conjunto contigo, le
-            solicitamos a nuestras autoridades atender cuestiones públicas
-            pendientes en Saltillo.
-          </p>
-          <p>
-            Desde 2012, la ciudadanía participa en nuestro programa reportando
-            baches, luminarias dañadas, semáforos descompuestos, residuos
-            acumulados, entre otros, y nosotros los canalizamos. Si bien la
-            respuesta de las autoridades toma tiempo dependiendo de la temática,
-            mientras más personas observemos y reportemos, más visibilidad
-            tendremos.
-          </p>
-          <p className="font-bold text-secondary">
-            Contribuir al bienestar de tu comunidad nunca fue tan fácil y
-            rápido.
-          </p>
+          <h2 className="text-secondary font-bold">{title}</h2>
+
+          {paragraphs.map((p, i) => {
+            const isHighlight = highlightIndices.includes(i);
+            return (
+              <p
+                key={i}
+                className={isHighlight ? "font-bold text-secondary" : undefined}
+              >
+                {p}
+              </p>
+            );
+          })}
         </motion.div>
       </div>
     </Page>

@@ -4,37 +4,51 @@ import HeroSection from "../components/sections/HeroSection";
 import CivicSection from "../components/sections/CivicSection";
 import AxesSection from "../components/shared/AxesSection";
 
-import SeguridadIcon from "../images/icon-seguridad.svg";
-import JusticiaIcon from "../images/icon-justicia.svg";
-import TransparenciaIcon from "../images/icon-transparencia.svg";
-import CiudadaniaIcon from "../images/icon-ciudadania.svg";
 import TeamSection from "../components/sections/TeamSection";
 import AlliancesSection from "../components/sections/AlliancesSection";
 import { HeadFC } from "gatsby";
 import { SEO } from "../components/layout/SEO";
-
-const axes = [
-  { title: "Seguridad", icon: SeguridadIcon },
-  { title: "Justicia", icon: JusticiaIcon },
-  { title: "Transparencia", icon: TransparenciaIcon },
-  { title: "Ciudadanía", icon: CiudadaniaIcon },
-];
+import { useRemoteData } from "../hooks/useRemoteData";
+import { ClipLoader } from "react-spinners";
+import {
+  alliancesFallback,
+  civicFallback,
+  homepageFallback,
+  teamFallback,
+} from "../data";
+import { HomepageData, CivicData, TeamData, AlliancesData } from "../types";
 
 const IndexPage = () => {
+  const { data: homepageData, loading: loadingHomepage } =
+    useRemoteData<HomepageData>("/mock/homepage.json", homepageFallback);
+  const { data: civicData, loading: loadingCivic } = useRemoteData<CivicData>(
+    "/mock/civic.json",
+    civicFallback
+  );
+  const { data: teamData, loading: loadingTeam } = useRemoteData<TeamData>(
+    "/mock/team.json",
+    teamFallback
+  );
+  const { data: alliancesData, loading: loadingAlliances } =
+    useRemoteData<AlliancesData>("/mock/alliances.json", alliancesFallback);
+
+  if (loadingHomepage || loadingCivic || loadingTeam || loadingAlliances)
+    return <ClipLoader color="#00A75D" />;
+
   return (
     <Layout>
-      <HeroSection />
-      <CivicSection />
+      <HeroSection data={homepageData.hero} />
+      <CivicSection data={civicData} />
       <AxesSection
-        title="Conoce nuestros ejes de trabajo"
-        axes={axes}
+        title={homepageData.axes.title}
+        axes={homepageData.axes.axes}
         theme="primary"
       />
       <div id="equipo">
-        <TeamSection />
+        <TeamSection data={teamData} />
       </div>
       <div id="alianzas">
-        <AlliancesSection />
+        <AlliancesSection data={alliancesData} />
       </div>
     </Layout>
   );

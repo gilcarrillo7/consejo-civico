@@ -1,0 +1,16 @@
+{
+  "sections": [
+    {
+      "title": "Nuestra ciudad es resultado de la corresponsabilidad.",
+      "subtitle": "Centro de Integración Ciudadana Saltillo",
+      "description": "CIC es una plataforma que enlaza a la ciudadanía con las autoridades para mejorar su entorno y sus comunidades a través de la canalización de tus reportes ciudadanos.",
+      "buttonText": "Leer más",
+      "buttonLink": "/centro_integracion_ciudadana"
+    },
+    {
+      "title": "Saltillo, ¿Cómo vamos?",
+      "description": "Contribuimos al fortalecimiento de la democracia evaluando los resultados del gobierno municipal, fomentando la participación ciudadana, aportando datos y espacios de rendición de cuentas."
+    }
+  ],
+  "image": "civico.gif"
+}

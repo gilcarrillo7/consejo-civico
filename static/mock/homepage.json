@@ -1,0 +1,17 @@
+{
+  "hero": {
+    "title": "Promovemos la vinculación y participación ciudadana para construir una mejor sociedad.",
+    "highlight": "participación ciudadana",
+    "buttonText": "Conoce más",
+    "buttonLink": "/quienes_somos"
+  },
+  "axes": {
+    "title": "Conoce nuestros ejes de trabajo",
+    "axes": [
+      { "title": "Seguridad", "icon": "icon-seguridad.svg" },
+      { "title": "Justicia", "icon": "icon-justicia.svg" },
+      { "title": "Transparencia", "icon": "icon-transparencia.svg" },
+      { "title": "Ciudadanía", "icon": "icon-ciudadania.svg" }
+    ]
+  }
+}
