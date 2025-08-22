@@ -9,44 +9,67 @@ import AlliancesSection from "../components/sections/AlliancesSection";
 import { HeadFC } from "gatsby";
 import { SEO } from "../components/layout/SEO";
 import { useRemoteData } from "../hooks/useRemoteData";
-import { ClipLoader } from "react-spinners";
 import {
   alliancesFallback,
-  civicFallback,
-  homepageFallback,
+  civicFallbackSections,
+  heroFallback,
+  homepageAxisFallback,
   teamFallback,
 } from "../data";
-import { HomepageData, CivicData, TeamData, AlliancesData } from "../types";
+import { HeroData, TeamData } from "../types";
+import { useCategoryPosts } from "../hooks/useCategoryPosts";
+import FullLoader from "../components/layout/FullLoader";
+import { useEffect } from "react";
 
 const IndexPage = () => {
   const { data: homepageData, loading: loadingHomepage } =
-    useRemoteData<HomepageData>("/mock/homepage.json", homepageFallback);
-  const { data: civicData, loading: loadingCivic } = useRemoteData<CivicData>(
-    "/mock/civic.json",
-    civicFallback
+    useRemoteData<HeroData>("home-hero", heroFallback);
+  const { data: civicData, loading: loadingCivic } = useCategoryPosts(
+    4, // sección cívica
+    civicFallbackSections
+  );
+  const { data: axesData, loading: loadingAxes } = useCategoryPosts(
+    5, // ejes de trabajo
+    homepageAxisFallback
   );
   const { data: teamData, loading: loadingTeam } = useRemoteData<TeamData>(
-    "/mock/team.json",
+    "nuestro-equipo",
     teamFallback
   );
-  const { data: alliancesData, loading: loadingAlliances } =
-    useRemoteData<AlliancesData>("/mock/alliances.json", alliancesFallback);
+  const { data: alliancesData, loading: loadingAlliances } = useCategoryPosts(
+    6, // alianzas
+    alliancesFallback
+  );
+  const loading =
+    loadingHomepage ||
+    loadingCivic ||
+    loadingAxes ||
+    loadingTeam ||
+    loadingAlliances;
 
-  if (loadingHomepage || loadingCivic || loadingTeam || loadingAlliances)
-    return <ClipLoader color="#00A75D" />;
+  useEffect(() => {
+    if (!loading) {
+      const hash = window.location.hash;
+      if (hash) {
+        const el = document.querySelector(hash);
+        if (el) {
+          el.scrollIntoView();
+        }
+      }
+    }
+  }, [loading]);
+
+  if (loading) return <FullLoader />;
 
   return (
     <Layout>
-      <HeroSection data={homepageData.hero} />
-      <CivicSection data={civicData} />
-      <AxesSection
-        title={homepageData.axes.title}
-        axes={homepageData.axes.axes}
-        theme="primary"
-      />
+      <HeroSection data={homepageData} />
+      <CivicSection sections={civicData} />
+      <AxesSection axes={axesData} theme="primary" />
       <div id="equipo">
         <TeamSection data={teamData} />
       </div>
+      =
       <div id="alianzas">
         <AlliancesSection data={alliancesData} />
       </div>

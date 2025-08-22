@@ -3,9 +3,9 @@ import React from "react";
 import Button from "../shared/Button";
 import { motion } from "framer-motion";
 import { navigate } from "gatsby";
-import type { ProgramsData, ProgramItem } from "../../types";
+import type { ProgramsData } from "../../types";
 
-type Props = { data: ProgramsData };
+type Props = { data: ProgramsData[] };
 
 const itemVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -13,9 +13,11 @@ const itemVariants = {
 };
 
 export default function ProgramsSection({ data }: Props) {
-  const { sectionTitle = "Nuestros programas", items } = data;
+  const sectionTitle = data.find(
+    (program) => program.sectionTitle
+  )?.sectionTitle;
 
-  const handleClick = (item: ProgramItem) => {
+  const handleClick = (item: ProgramsData) => {
     if (!item.buttonLink) return;
     // Navegación interna si parece ruta relativa; externa si es URL absoluta
     if (item.buttonLink.startsWith("http")) {
@@ -45,7 +47,7 @@ export default function ProgramsSection({ data }: Props) {
           transition={{ staggerChildren: 0.2, delay: 0.3 }}
           viewport={{ once: true }}
         >
-          {items.map((item, idx) => (
+          {data.map((item, idx) => (
             <motion.div key={idx} variants={itemVariants}>
               <h3 className="text-secondary mb-1">{item.title}</h3>
               <p className="mb-4">{item.description}</p>

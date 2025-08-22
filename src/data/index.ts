@@ -1,34 +1,49 @@
 import {
-  HomepageData,
   TeamData,
   AlliancesData,
   AboutData,
-  MissionVisionData,
   ProgramsData,
   OrganigramData,
   AxesData,
   CentroData,
   ReportStatsData,
+  HeroData,
+  Axes,
 } from "../types";
 
-export const homepageFallback: HomepageData = {
-  hero: {
-    title:
-      "Promovemos la vinculación y participación ciudadana para construir una mejor sociedad.",
-    highlight: "participación ciudadana",
-    buttonText: "Conoce más",
-    buttonLink: "/quienes_somos",
-  },
-  axes: {
-    title: "Conoce nuestros ejes de trabajo",
-    axes: [
-      { title: "Seguridad", icon: "icon-seguridad.svg" },
-      { title: "Justicia", icon: "icon-justicia.svg" },
-      { title: "Transparencia", icon: "icon-transparencia.svg" },
-      { title: "Ciudadanía", icon: "icon-ciudadania.svg" },
-    ],
-  },
+export const heroFallback: HeroData = {
+  title:
+    "Promovemos la vinculación y participación ciudadana para construir una mejor sociedad.",
+  highlight: "participación ciudadana",
+  buttontext: "Conoce más",
+  buttonlink: "/quienes_somos",
 };
+export const homepageAxisFallback: Axes[] = [
+  {
+    section: "Conoce nuestros ejes de trabajo",
+    title: "Seguridad",
+    icon: "icon-seguridad.svg",
+  },
+  { title: "Justicia", icon: "icon-justicia.svg" },
+  { title: "Transparencia", icon: "icon-transparencia.svg" },
+  { title: "Ciudadanía", icon: "icon-ciudadania.svg" },
+];
+export const civicFallbackSections = [
+  {
+    title: "Nuestra ciudad es resultado de la corresponsabilidad.",
+    subtitle: "Centro de Integración Ciudadana Saltillo",
+    description:
+      "CIC es una plataforma que enlaza a la ciudadanía con las autoridades para mejorar su entorno y sus comunidades a través de la canalización de tus reportes ciudadanos.",
+    buttonText: "Leer más",
+    buttonLink: "/centro_integracion_ciudadana",
+  },
+  {
+    title: "Saltillo, ¿Cómo vamos?",
+    description:
+      "Contribuimos al fortalecimiento de la democracia evaluando los resultados del gobierno municipal, fomentando la participación ciudadana, aportando datos y espacios de rendición de cuentas.",
+  },
+] as any[];
+
 export const civicFallback = {
   sections: [
     {
@@ -50,45 +65,23 @@ export const civicFallback = {
 
 export const teamFallback: TeamData = {
   title: "Nuestro equipo",
-  quote:
-    "La sociedad organizada tiene el poder de cambiar lo que sea que se proponga.",
-  description:
-    "Nuestro equipo impulsa los cambios que la ciudadanía de Saltillo necesita. Para representarte, necesitamos que tú y tu entorno social participen en nuestros programas.",
-  note: "¡La ciudad y tu comunidad se verán beneficiadas por tu acción!",
-  members: [
-    {
-      name: "Sara Martha Arizpe Ramos",
-      role: "Directora Ejecutiva",
-    },
-    {
-      name: "Edgar Alejandro Calvillo Cepeda",
-      role: "Coordinador Administrativo",
-    },
-    {
-      name: "Felipe de Jesús López Delgado",
-      role: "Coordinador de Innovación",
-    },
-    {
-      name: "Ana Izel Fraire González",
-      role: "Coordinadora de Comunicación",
-    },
-  ],
-  buttonText: "Contacto",
-  buttonLink: "/contacto",
+  buttontext: "Contacto",
+  buttonlink: "/contacto",
   image: "equipo.png",
+  content: "",
 };
 
-export const alliancesFallback: AlliancesData = {
-  title: "Alianzas",
-  logos: Array.from({ length: 35 }, (_, i) => `alianza${i + 1}.png`),
-};
+export const alliancesFallback: AlliancesData[] = Array.from(
+  { length: 35 },
+  (_, i) => ({
+    title: "Alianzas",
+    logo: `/alianzas/alianza${i + 1}.png`,
+  })
+);
 
 export const aboutFallback: AboutData = {
-  text: "Somos una asociación civil sin fines de lucro conformada por instituciones, cámaras empresariales, academia y organizaciones de la sociedad civil. Juntos, sumamos esfuerzos para construir una mejor sociedad apoyando las causas de nuestros miembros, y a su vez, representando a la ciudadanía ante las autoridades y las instituciones prestadoras de servicios ciudadanos.",
-  showShape: true,
-  shapeColor: "#312783",
-};
-export const missionVisionFallback: MissionVisionData = {
+  about:
+    "Somos una asociación civil sin fines de lucro conformada por instituciones, cámaras empresariales, academia y organizaciones de la sociedad civil. Juntos, sumamos esfuerzos para construir una mejor sociedad apoyando las causas de nuestros miembros, y a su vez, representando a la ciudadanía ante las autoridades y las instituciones prestadoras de servicios ciudadanos.",
   missionTitle: "Misión:",
   mission:
     "Contribuir a la consolidación de un mejor país y sus instituciones a través de la participación ciudadana para la incidencia en políticas públicas.",
@@ -97,70 +90,64 @@ export const missionVisionFallback: MissionVisionData = {
     "Ser una organización de representación y activación ciudadana, líder en el desarrollo de iniciativas estratégicas e innovadoras para la incidencia en políticas públicas en materia de Seguridad, Justicia, Ciudadanía, Transparencia y Rendición de Cuentas, en el Estado de Coahuila y en México.",
 };
 // data.ts
-export const programsFallback: ProgramsData = {
-  sectionTitle: "Nuestros programas",
-  items: [
-    {
-      title: "Centro de Integración Ciudadana Saltillo",
-      description:
-        "Un puente entre ciudadanía y gobierno, entre reportes ciudadanos y soluciones.",
-      buttonText: "Leer más",
-      buttonLink: "/centro_integracion_ciudadana",
-    },
-    {
-      title: "Saltillo, ¿Cómo vamos?",
-      description:
-        "Aportamos datos para mejorar la toma de decisiones públicas.",
-    },
-  ],
-};
+export const programsFallback: ProgramsData[] = [
+  {
+    sectionTitle: "Nuestros programas",
+    title: "Centro de Integración Ciudadana Saltillo",
+    description:
+      "Un puente entre ciudadanía y gobierno, entre reportes ciudadanos y soluciones.",
+    buttonText: "Leer más",
+    buttonLink: "/centro_integracion_ciudadana",
+  },
+  {
+    sectionTitle: "Nuestros programas",
+    title: "Saltillo, ¿Cómo vamos?",
+    description: "Aportamos datos para mejorar la toma de decisiones públicas.",
+  },
+];
 // data.ts
 export const organigramFallback: OrganigramData = {
   title: "Organigrama institucional",
-  image: {
-    src: "/organigrama.jpg",
-    alt: "Organigrama institucional",
-  },
+  image: "/organigrama.jpg",
   subtitle:
     "¡Escríbenos y sumemos esfuerzos para construir una mejor sociedad!",
-  cta: {
-    text: "Contacto",
-    link: "/contacto",
-    variant: "primary",
-  },
+  buttonText: "Contacto",
+  buttonLink: "/contacto",
 };
 // data.ts
-export const axesCentroFallback: AxesData = {
-  title: "¿Cómo funciona?",
-  theme: "secondary",
-  axes: [
-    { title: "Detecta el problema.", icon: "/images/icon-saltillo1.svg" },
-    {
-      title:
-        'Comparte la ubicación, envía una foto y cuenta de qué se trata a través de nuestro <a href="https://wa.me/5218445060242" target="_blank" rel="noopener noreferrer" class="font-bold underline">WhatsApp</a>.',
-      icon: "/images/icon-saltillo2.svg",
-    },
-    {
-      title:
-        "Nuestro equipo canalizará tu reporte con las autoridades responsables.",
-      icon: "/images/icon-saltillo4.svg",
-    },
-    {
-      title: "Las autoridades se harán cargo y brindarán la solución.",
-      icon: "/images/icon-saltillo3.svg",
-    },
-  ],
-};
+export const axesCentroFallback: Axes[] = [
+  {
+    section: "¿Cómo funciona?",
+    title: "Detecta el problema.",
+    icon: "/images/icon-saltillo1.svg",
+  },
+  {
+    title:
+      'Comparte la ubicación, envía una foto y cuenta de qué se trata a través de nuestro <a href="https://wa.me/5218445060242" target="_blank" rel="noopener noreferrer" class="font-bold underline">WhatsApp</a>.',
+    icon: "/images/icon-saltillo2.svg",
+  },
+  {
+    title:
+      "Nuestro equipo canalizará tu reporte con las autoridades responsables.",
+    icon: "/images/icon-saltillo4.svg",
+  },
+  {
+    title: "Las autoridades se harán cargo y brindarán la solución.",
+    icon: "/images/icon-saltillo3.svg",
+  },
+];
 // data.ts
 export const centroFallback: CentroData = {
   title: "Centro de Integración Ciudadana Saltillo",
   videoUrl: "https://vimeo.com/1103510859",
-  paragraphs: [
-    "A través de un reporte ciudadano, en conjunto contigo, le solicitamos a nuestras autoridades atender cuestiones públicas pendientes en Saltillo.",
-    "Desde 2012, la ciudadanía participa en nuestro programa reportando baches, luminarias dañadas, semáforos descompuestos, residuos acumulados, entre otros, y nosotros los canalizamos. Si bien la respuesta de las autoridades toma tiempo dependiendo de la temática, mientras más personas observemos y reportemos, más visibilidad tendremos.",
-    "Contribuir al bienestar de tu comunidad nunca fue tan fácil y rápido.",
-  ],
-  highlightIndices: [2],
+  description:
+    '<p>A través de un reporte ciudadano, en conjunto contigo, le solicitamos a nuestras autoridades atender cuestiones públicas pendientes en Saltillo.</p><p>Desde 2012, la ciudadanía participa en nuestro programa reportando baches, luminarias dañadas, semáforos descompuestos, residuos acumulados, entre otros, y nosotros los canalizamos. Si bien la respuesta de las autoridades toma tiempo dependiendo de la temática, mientras más personas observemos y reportemos, más visibilidad tendremos.</p><p class="font-bold text-secondary">Contribuir al bienestar de tu comunidad nunca fue tan fácil y rápido.</p>',
+  bottom: `<p style="opacity: 1; transform: none;">De 2022 a 2024, hemos logrado canalizar exitosamente más de <strong>2,700 reportes ciudadanos</strong>.</p><p class="font-bold" style="opacity: 1; transform: none;">Gracias a nuestra intervención se han reparado:</p><p class="whitespace-pre-line" style="opacity: 1; transform: none;">- 1,381 luminarias
+- 576 semáforos descompuestos
+- 352 baches
+- 331 fugas de agua
+- Mover 74 autos abandonados
+- Tapar 49 alcantarillas</p><p class="text-secondary font-semibold" style="opacity: 1; transform: none;">Sé parte de la solución y comienza a enviar tus reportes. ¡Es muy fácil!</p><p style="opacity: 1; transform: none;">Lo puedes hacer a través de nuestro <a href="https://wa.me/5218445060242" target="_blank" rel="noopener noreferrer" class="font-bold underline">Whatsapp</a>.</p>`,
 };
 export const reportStatsFallback: ReportStatsData = {
   period: "2022 a 2024",

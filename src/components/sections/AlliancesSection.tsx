@@ -4,12 +4,11 @@ import Page from "../layout/Page";
 import type { AlliancesData } from "../../types";
 
 type Props = {
-  data: AlliancesData;
+  data: AlliancesData[];
 };
 
 export default function AlliancesSection({ data }: Props) {
-  const { title, logos } = data;
-
+  const title = data.find((alianza) => alianza.title)?.title;
   const containerVariants = {
     hidden: {},
     visible: {
@@ -45,14 +44,14 @@ export default function AlliancesSection({ data }: Props) {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          {logos.map((logo, idx) => (
+          {data.map((logo, idx) => (
             <motion.div
               key={idx}
               variants={logoVariants}
               className="flex justify-center"
             >
               <img
-                src={`/alianzas/${logo}`}
+                src={`${logo.logo}`}
                 alt={`Aliado ${idx + 1}`}
                 className="w-full h-auto object-contain"
               />

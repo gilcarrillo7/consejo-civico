@@ -8,7 +8,7 @@ import type { CentroData } from "../../types";
 type Props = { data: CentroData };
 
 export default function CentroSection({ data }: Props) {
-  const { title, videoUrl, paragraphs, highlightIndices = [] } = data;
+  const { title, videoUrl, description } = data;
 
   return (
     <Page className="bg-primary text-white px-4 py-24 sm:py-16">
@@ -34,17 +34,10 @@ export default function CentroSection({ data }: Props) {
         >
           <h2 className="text-secondary font-bold">{title}</h2>
 
-          {paragraphs.map((p, i) => {
-            const isHighlight = highlightIndices.includes(i);
-            return (
-              <p
-                key={i}
-                className={isHighlight ? "font-bold text-secondary" : undefined}
-              >
-                {p}
-              </p>
-            );
-          })}
+          <div
+            className="flex flex-col gap-6"
+            dangerouslySetInnerHTML={{ __html: description }}
+          />
         </motion.div>
       </div>
     </Page>

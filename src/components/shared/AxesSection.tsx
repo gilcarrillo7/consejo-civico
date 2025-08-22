@@ -10,17 +10,16 @@ type AxisItem = {
 };
 
 type AxesSectionProps = {
-  title: string;
   axes: AxisItem[];
   theme?: "primary" | "secondary";
 };
 
 export default function AxesSection({
-  title,
   axes,
   theme = "primary",
 }: AxesSectionProps) {
   const [current, setCurrent] = useState(0);
+  const title = axes.find((axis) => axis.title)?.title;
 
   const handlePrev = () => {
     setCurrent((prev) => (prev === 0 ? axes.length - 1 : prev - 1));
@@ -132,7 +131,7 @@ export default function AxesSection({
                   circleClass
                 )}
               >
-                <img src={axis.icon} alt={axis.title} className="w-20 h-20" />
+                <img src={axis.icon} alt={axis.title} className="h-20" />
               </div>
               <div
                 className={classNames("text-xl", textColorClass)}

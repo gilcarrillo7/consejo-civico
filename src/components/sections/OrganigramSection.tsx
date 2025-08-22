@@ -13,15 +13,16 @@ export default function OrganigramSection({ data }: Props) {
     title = "Organigrama institucional",
     image,
     subtitle = "¡Escríbenos y sumemos esfuerzos para construir una mejor sociedad!",
-    cta,
+    buttonText,
+    buttonLink,
   } = data;
 
   const handleCTA = () => {
-    if (!cta) return;
-    if (cta.link.startsWith("http")) {
-      window.location.href = cta.link;
+    if (!buttonLink) return;
+    if (buttonLink.startsWith("http")) {
+      window.location.href = buttonLink;
     } else {
-      navigate(cta.link);
+      navigate(buttonLink);
     }
   };
 
@@ -46,8 +47,8 @@ export default function OrganigramSection({ data }: Props) {
           className="flex justify-center"
         >
           <img
-            src={image.src}
-            alt={image.alt || title}
+            src={image}
+            alt={title}
             className="w-full max-w-5xl h-auto object-contain"
             loading="lazy"
           />
@@ -65,7 +66,7 @@ export default function OrganigramSection({ data }: Props) {
           </motion.p>
         )}
 
-        {cta && cta.text && cta.link && (
+        {buttonText && buttonLink && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -78,7 +79,7 @@ export default function OrganigramSection({ data }: Props) {
               containerClassName="!text-center"
               onClick={handleCTA}
             >
-              {cta.text}
+              {buttonText}
             </Button>
           </motion.div>
         )}

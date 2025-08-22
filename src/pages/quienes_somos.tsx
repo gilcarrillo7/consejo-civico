@@ -9,55 +9,34 @@ import ProgramsSection from "../components/sections/ProgramsSection";
 import OrganigramSection from "../components/sections/OrganigramSection";
 
 import { useRemoteData } from "../hooks/useRemoteData";
-import { ClipLoader } from "react-spinners";
 
-import type {
-  AboutData,
-  MissionVisionData,
-  ProgramsData,
-  OrganigramData,
-} from "../types";
-import {
-  aboutFallback,
-  missionVisionFallback,
-  programsFallback,
-  organigramFallback,
-} from "../data";
+import type { AboutData, ProgramsData, OrganigramData } from "../types";
+import { aboutFallback, programsFallback, organigramFallback } from "../data";
+import { useCategoryPosts } from "../hooks/useCategoryPosts";
+import FullLoader from "../components/layout/FullLoader";
 
 const AboutPage = () => {
   const { data: aboutData, loading: loadingAbout } = useRemoteData<AboutData>(
-    "/mock/about.json", // ajusta si usas otra ruta
+    "quienes-somos",
     aboutFallback
   );
-
-  const { data: missionVisionData, loading: loadingMissionVision } =
-    useRemoteData<MissionVisionData>(
-      "/mock/missionVision.json",
-      missionVisionFallback
+  const { data: programsData, loading: loadingPrograms } =
+    useCategoryPosts<ProgramsData>(
+      8, // programas
+      programsFallback
     );
 
-  const { data: programsData, loading: loadingPrograms } =
-    useRemoteData<ProgramsData>("/mock/programs.json", programsFallback);
-
   const { data: organigramData, loading: loadingOrganigram } =
-    useRemoteData<OrganigramData>("/mock/organigram.json", organigramFallback);
+    useRemoteData<OrganigramData>("organigrama", organigramFallback);
 
-  if (loadingAbout || loadingMissionVision || loadingPrograms) {
-    return <ClipLoader color="#00A75D" />;
-  }
-  if (
-    loadingAbout ||
-    loadingMissionVision ||
-    loadingPrograms ||
-    loadingOrganigram
-  ) {
-    return <ClipLoader color="#00A75D" />;
+  if (loadingAbout || loadingPrograms || loadingOrganigram) {
+    return <FullLoader />;
   }
 
   return (
     <Layout>
-      <AboutSection data={aboutData} />
-      <MissionVisionSection data={missionVisionData} />
+      <AboutSection text={aboutData.about} />
+      <MissionVisionSection data={aboutData} />
       <ProgramsSection data={programsData} />
       <OrganigramSection data={organigramData} />
     </Layout>

@@ -10,18 +10,15 @@ type Section = {
   description: string;
   buttonText?: string;
   buttonLink?: string;
+  image?: string;
 };
 
 type CivicSectionProps = {
-  data: {
-    sections: Section[];
-    image: string;
-  };
+  sections: Section[];
 };
 
-export default function CivicSection({ data }: CivicSectionProps) {
-  const { sections, image } = data;
-
+export default function CivicSection({ sections }: CivicSectionProps) {
+  const image = sections.find((section) => section.image)?.image;
   return (
     <Page>
       <div className="flex flex-col lg:flex-row items-center gap-16">
@@ -51,7 +48,7 @@ export default function CivicSection({ data }: CivicSectionProps) {
           viewport={{ once: true, amount: 0.5 }}
         >
           {sections.map((section, index) => (
-            <div key={index} className={index === 0 ? "md:mt-[-5rem]" : ""}>
+            <div key={index} className={index === 0 ? "" : ""}>
               <h2 className="text-secondary text-2xl md:text-3xl font-semibold text-primary mb-6">
                 {section.title}
               </h2>

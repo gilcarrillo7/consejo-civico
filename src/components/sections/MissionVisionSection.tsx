@@ -1,8 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
-import type { MissionVisionData } from "../../types";
+import type { AboutData } from "../../types";
 
-type Props = { data: MissionVisionData };
+type Props = { data: AboutData };
 
 export default function MissionVisionSection({ data }: Props) {
   const {

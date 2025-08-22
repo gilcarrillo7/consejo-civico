@@ -36,16 +36,7 @@ type Props = {
 };
 
 export default function TeamSection({ data }: Props) {
-  const {
-    title,
-    quote,
-    description,
-    note,
-    members,
-    buttonText,
-    buttonLink,
-    image,
-  } = data;
+  const { title, content, buttontext, buttonlink, image } = data;
 
   const listVariants = {
     hidden: {},
@@ -94,6 +85,11 @@ export default function TeamSection({ data }: Props) {
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
           >
+            <div
+              className="flex flex-col gap-4"
+              dangerouslySetInnerHTML={{ __html: content }}
+            ></div>
+            {/*             
             <motion.p
               className="font-bold text-lg text-primary"
               variants={itemVariant}
@@ -120,11 +116,11 @@ export default function TeamSection({ data }: Props) {
                   {member.role}
                 </motion.li>
               ))}
-            </motion.ul>
+            </motion.ul> */}
 
             <motion.div variants={itemVariant}>
-              <Button variant="primary" onClick={() => navigate(buttonLink)}>
-                {buttonText}
+              <Button variant="primary" onClick={() => navigate(buttonlink)}>
+                {buttontext}
               </Button>
             </motion.div>
           </motion.div>

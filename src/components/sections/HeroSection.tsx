@@ -3,18 +3,14 @@ import { motion } from "framer-motion";
 import Page from "../layout/Page";
 import Button from "../shared/Button";
 import { navigate } from "gatsby";
+import { HeroData } from "../../types";
 
 type HeroSectionProps = {
-  data: {
-    title: string;
-    highlight: string;
-    buttonText: string;
-    buttonLink: string;
-  };
+  data: HeroData;
 };
 
-const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
-  const { title, highlight, buttonText, buttonLink } = data;
+const HeroSection: React.FC<HeroSectionProps> = ({data}) => {
+  const { title, highlight, buttontext, buttonlink } = data;
   const parts = title.split(highlight);
   return (
     <Page className="bg-primary overflow-hidden">
@@ -51,8 +47,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
             <span className="text-secondary font-semibold">{highlight}</span>
             {parts[1]}
           </h1>
-          <Button variant="outline" onClick={() => navigate("/quienes_somos")}>
-            {buttonText}
+          <Button variant="outline" onClick={() => navigate(buttonlink)}>
+            {buttontext}
           </Button>
         </motion.div>
       </div>
