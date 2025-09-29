@@ -18,7 +18,9 @@ function AnimationFranjas() {
           viewport={{ once: true, amount: 0.3 }}
         >
           <div
-            className="absolute w-[300%] h-[100px] bg-primary"
+            className={`absolute w-[300%] h-[100px] bg-primary ${
+              i === 1 || i === 2 ? "hidden" : ""
+            }`}
             style={{
               top: `${top}`,
               left: `${-150 + i * 50}%`,

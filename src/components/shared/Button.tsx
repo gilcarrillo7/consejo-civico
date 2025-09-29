@@ -8,6 +8,7 @@ type ButtonProps = {
   containerClassName?: string;
   type?: "button" | "submit" | "reset";
   variant?: "primary" | "secondary" | "outline" | "outline-secondary";
+  disabled?: boolean;
 };
 
 const Button = ({
@@ -17,6 +18,7 @@ const Button = ({
   containerClassName = "",
   type = "button",
   variant = "outline",
+  disabled = false,
 }: ButtonProps) => {
   const baseClass = "px-6 py-2 rounded transition font-light";
 
@@ -37,6 +39,7 @@ const Button = ({
         type={type}
         onClick={onClick}
         className={classNames(baseClass, variantClasses[variant], className)}
+        disabled={disabled}
       >
         {children}
       </button>

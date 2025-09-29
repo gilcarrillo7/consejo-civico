@@ -5,6 +5,7 @@ import classNames from "classnames";
 import { motion } from "framer-motion";
 
 type AxisItem = {
+  section?: string;
   title: string;
   icon: string;
 };
@@ -19,7 +20,7 @@ export default function AxesSection({
   theme = "primary",
 }: AxesSectionProps) {
   const [current, setCurrent] = useState(0);
-  const title = axes.find((axis) => axis.title)?.title;
+  const title = axes.find((axis) => axis.section)?.section;
 
   const handlePrev = () => {
     setCurrent((prev) => (prev === 0 ? axes.length - 1 : prev - 1));
